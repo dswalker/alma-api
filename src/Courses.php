@@ -57,7 +57,9 @@ class Courses extends Alma
      */
     public function getCourse($id)
     {
-        $json = $this->client()->get("courses/$id?view=full");
+    	$params = array('view' => 'full');
+    	
+        $json = $this->client()->get("courses/$id", $params);
         return new Course($json);
     }
 
