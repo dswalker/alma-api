@@ -25,7 +25,7 @@ class Json
      */
     public function __construct($json = "")
     {
-        if ($json != "") {
+        if ($json != "" && $json != null) {
             if (! is_string($json) && ! $json instanceof \stdClass) {
                 throw new \OutOfBoundsException('param must be of type string or json, supplied ' . gettype($json));
             }
