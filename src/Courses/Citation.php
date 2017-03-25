@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Citation Object.
@@ -32,7 +30,7 @@ class Citation extends Record
     {
         return (string) $this->json()->id;
     }
-     
+
     /**
      * Identifier of the citation in Alma. Output parameter. Should be used in
      * subsequent queries regarding the citation.
@@ -49,13 +47,13 @@ class Citation extends Record
      * 'ReadingListCitationStatuses' code table and
      * 'AdditionalReadingListCitationStatuses' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getStatus()
     {
         return $this->json()->status;
     }
-     
+
     /**
      * The status of the citation. Possible codes are listed in
      * 'ReadingListCitationStatuses' code table and
@@ -73,13 +71,13 @@ class Citation extends Record
      * The copyright status of the citation. Possible codes are listed in
      * 'CitationCopyRights' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getCopyrightsStatus()
     {
         return $this->json()->copyrights_status;
     }
-     
+
     /**
      * The copyright status of the citation. Possible codes are listed in
      * 'CitationCopyRights' code table.
@@ -96,13 +94,13 @@ class Citation extends Record
      * The secondary Type status of the citation. Possible codes are listed in
      * 'ReadingListCitationSecondaryTypes' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getSecondaryType()
     {
         return $this->json()->secondary_type;
     }
-     
+
     /**
      * The secondary Type status of the citation. Possible codes are listed in
      * 'ReadingListCitationSecondaryTypes' code table.
@@ -119,13 +117,13 @@ class Citation extends Record
      * The type of the citation. Possible codes are listed in
      * 'ReadingListCitationTypes' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getType()
     {
         return $this->json()->type;
     }
-     
+
     /**
      * The type of the citation. Possible codes are listed in
      * 'ReadingListCitationTypes' code table.
@@ -141,31 +139,21 @@ class Citation extends Record
     /**
      * Metadata for the Citation.
      *
-     * @return Metadata[]
+     * @return Metadata
      */
     public function getMetadata()
     {
-        $final = array();
-        
-        foreach ((array) $this->json()->metadata as $metadat) {
-            $final[] = new Metadata($metadat);
-        }
-        
-        return $final;
+        return $this->json()->metadata;
     }
-     
+
     /**
      * Metadata for the Citation.
      *
-     * @param Metadata[] $metadata
+     * @param Metadata $metadata
      */
-    public function setMetadata(array $metadata)
+    public function setMetadata(Metadata $metadata)
     {
-        $this->json()->metadata = array();
-            
-        foreach ($metadata as $metadat) {
-            $this->json()->metadata[] = $metadat->json();
-        } 
+        $this->json()->metadata = $metadata;
     }
 
     /**
@@ -177,7 +165,7 @@ class Citation extends Record
     {
         return (string) $this->json()->open_url;
     }
-     
+
     /**
      * An OpenURL link for the Citation.
      *
@@ -200,7 +188,7 @@ class Citation extends Record
     {
         return (string) $this->json()->leganto_permalink;
     }
-     
+
     /**
      * A link to the Citation in Leganto UI.
      * 
@@ -223,7 +211,7 @@ class Citation extends Record
     {
         return (string) $this->json()->file_link;
     }
-     
+
     /**
      * A link to the Citation's file, when available.
      *
@@ -243,7 +231,7 @@ class Citation extends Record
     {
         return (string) $this->json()->public_note;
     }
-     
+
     /**
      * Public Note. Relevant for Leganto and only as an output.
      *
@@ -263,14 +251,14 @@ class Citation extends Record
     public function getDefinedFields()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->defined_fields as $defined_field) {
             $final[] = new DefinedField($defined_field);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * Types and Attributes configured in CitationAttributes, CitationTypes,
      * CitationsTypesAttributes.
@@ -280,7 +268,7 @@ class Citation extends Record
     public function setDefinedFields(array $defined_fields)
     {
         $this->json()->defined_fields = array();
-            
+
         foreach ($defined_fields as $defined_field) {
             $this->json()->defined_fields[] = $defined_field->json();
         } 
@@ -289,31 +277,21 @@ class Citation extends Record
     /**
      * Information regarding the Section to which the citation belongs.
      *
-     * @return SectionInfo[]
+     * @return SectionInfo
      */
     public function getSectionInfo()
     {
-        $final = array();
-        
-        foreach ((array) $this->json()->section_info as $section_inf) {
-            $final[] = new SectionInfo($section_inf);
-        }
-        
-        return $final;
+        return $this->json()->section_info;
     }
-     
+
     /**
      * Information regarding the Section to which the citation belongs.
      *
-     * @param SectionInfo[] $section_info
+     * @param SectionInfo $section_info
      */
-    public function setSectionInfo(array $section_info)
+    public function setSectionInfo(SectionInfo $section_info)
     {
-        $this->json()->section_info = array();
-            
-        foreach ($section_info as $section_inf) {
-            $this->json()->section_info[] = $section_inf->json();
-        } 
+        $this->json()->section_info = $section_info;
     }
 
     /**
@@ -324,14 +302,14 @@ class Citation extends Record
     public function getCitationTags()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->citation_tags as $citation_tag) {
             $final[] = new CitationTag($citation_tag);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * Tags of the Citation.
      *
@@ -340,7 +318,7 @@ class Citation extends Record
     public function setCitationTags(array $citation_tags)
     {
         $this->json()->citation_tags = array();
-            
+
         foreach ($citation_tags as $citation_tag) {
             $this->json()->citation_tags[] = $citation_tag->json();
         } 

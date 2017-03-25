@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Course Object.
@@ -33,7 +31,7 @@ class Course extends Record
     {
         return (string) $this->json()->id;
     }
-     
+
     /**
      * Identifier of the course in Alma. Output parameter.
      * 
@@ -58,7 +56,7 @@ class Course extends Record
     {
         return (string) $this->json()->code;
     }
-     
+
     /**
      * Code of the course in Alma. Cannot be updated.
      * 
@@ -81,7 +79,7 @@ class Course extends Record
     {
         return (string) $this->json()->name;
     }
-     
+
     /**
      * The course name. Mandatory.
      *
@@ -103,7 +101,7 @@ class Course extends Record
     {
         return (string) $this->json()->section;
     }
-     
+
     /**
      * The course section.
      * 
@@ -119,13 +117,13 @@ class Course extends Record
     /**
      * The course faculty.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getAcademicDepartment()
     {
         return $this->json()->academic_department;
     }
-     
+
     /**
      * The course faculty.
      *
@@ -140,13 +138,13 @@ class Course extends Record
     /**
      * The code and name of the department processing the course. Mandatory.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getProcessingDepartment()
     {
         return $this->json()->processing_department;
     }
-     
+
     /**
      * The code and name of the department processing the course. Mandatory.
      *
@@ -161,22 +159,22 @@ class Course extends Record
     /**
      * List of terms.
      *
-     * @return ValueList
+     * @return Alma\Utils\ValueList
      */
     public function getTerms()
     {
         return $this->getValueList('terms');
     }
-     
+
     /**
      * List of terms.
      *
-     * @param ValueList $terms
+     * @param Alma\Utils\ValueList $terms
      */
-    public function setTerms(ValueList $terms)
+    public function setTerms(Alma\Utils\ValueList $terms)
     {
         $this->json()->term = array();
-            
+
         foreach ($terms as $term) {
             $this->json()->term[] = $term;
         } 
@@ -185,7 +183,7 @@ class Course extends Record
     /**
      * The status of the course: ACTIVE/INACTIVE.
      * 
-     * Output parameter.  When using XML for input, status will only be determined
+     * Output parameter. When using XML for input, status will only be determined
      * by the start and end date.
      *
      * @return string
@@ -194,11 +192,11 @@ class Course extends Record
     {
         return (string) $this->json()->status;
     }
-     
+
     /**
      * The status of the course: ACTIVE/INACTIVE.
      * 
-     * Output parameter.  When using XML for input, status will only be determined
+     * Output parameter. When using XML for input, status will only be determined
      * by the start and end date.
      *
      * @param string $status
@@ -217,7 +215,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->start_date);
     }
-     
+
     /**
      * The course start date.
      *
@@ -237,7 +235,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->end_date);
     }
-     
+
     /**
      * The course end date.
      *
@@ -257,7 +255,7 @@ class Course extends Record
     {
         return (int) $this->json()->weekly_hours;
     }
-     
+
     /**
      * The number of hours per week of the course.
      *
@@ -277,7 +275,7 @@ class Course extends Record
     {
         return (int) $this->json()->participants;
     }
-     
+
     /**
      * The number of course participants.
      *
@@ -297,7 +295,7 @@ class Course extends Record
     {
         return (string) $this->json()->year;
     }
-     
+
     /**
      * The course year.
      *
@@ -316,14 +314,14 @@ class Course extends Record
     public function getInstructors()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->instructor as $instructor) {
             $final[] = new Instructor($instructor);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * List of Instructors
      *
@@ -332,7 +330,7 @@ class Course extends Record
     public function setInstructors(array $instructors)
     {
         $this->json()->instructor = array();
-            
+
         foreach ($instructors as $instructor) {
             $this->json()->instructor[] = $instructor->json();
         } 
@@ -347,7 +345,7 @@ class Course extends Record
     {
         return (array) $this->json()->searchable_id;
     }
-     
+
     /**
      * A list of searchable IDs
      *
@@ -356,7 +354,7 @@ class Course extends Record
     public function setSearchableIds(array $searchable_ids)
     {
         $this->json()->searchable_id = array();
-            
+
         foreach ($searchable_ids as $searchable_id) {
             $this->json()->searchable_id[] = $searchable_id;
         } 
@@ -370,14 +368,14 @@ class Course extends Record
     public function getNotes()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->notes as $note) {
             $final[] = new Note($note);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * The course's related notes.
      *
@@ -386,7 +384,7 @@ class Course extends Record
     public function setNotes(array $notes)
     {
         $this->json()->notes = array();
-            
+
         foreach ($notes as $note) {
             $this->json()->notes[] = $note->json();
         } 
@@ -400,14 +398,14 @@ class Course extends Record
     public function getReadingLists()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->reading_lists as $reading_list) {
             $final[] = new ReadingList($reading_list);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * A list of Reading Lists
      *
@@ -416,7 +414,7 @@ class Course extends Record
     public function setReadingLists(array $reading_lists)
     {
         $this->json()->reading_lists = array();
-            
+
         foreach ($reading_lists as $reading_list) {
             $this->json()->reading_lists[] = $reading_list->json();
         } 

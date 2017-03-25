@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Metadata about the Citation.
@@ -31,7 +29,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->title;
     }
-     
+
     /**
      * A name given to the resource.
      *
@@ -51,7 +49,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->author;
     }
-     
+
     /**
      * An entity primarily responsible for making the resource.
      *
@@ -71,7 +69,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->publisher;
     }
-     
+
     /**
      * An entity responsible for making the resource available.
      *
@@ -92,7 +90,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->publication_date;
     }
-     
+
     /**
      * A point or period of time associated with an event in the lifecycle of the
      * resource.
@@ -113,7 +111,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->edition;
     }
-     
+
     /**
      * Edition
      *
@@ -133,7 +131,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->isbn;
     }
-     
+
     /**
      * ISBN
      *
@@ -153,7 +151,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->issn;
     }
-     
+
     /**
      * ISSN
      *
@@ -173,7 +171,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->mms_id;
     }
-     
+
     /**
      * MMS id. Used in order to add citation from repository.
      *
@@ -193,7 +191,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->additional_person_name;
     }
-     
+
     /**
      * Additional person name.
      *
@@ -213,7 +211,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->place_of_publication;
     }
-     
+
     /**
      * Place of publication.
      *
@@ -233,7 +231,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->call_number;
     }
-     
+
     /**
      * Call number.
      *
@@ -253,7 +251,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->note;
     }
-     
+
     /**
      * Note.
      *
@@ -273,7 +271,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->journal_title;
     }
-     
+
     /**
      * Journal title.
      *
@@ -293,7 +291,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->article_title;
     }
-     
+
     /**
      * Article title. See Dublin Core title.
      *
@@ -313,7 +311,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->issue;
     }
-     
+
     /**
      * Issue.
      *
@@ -333,7 +331,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->chapter;
     }
-     
+
     /**
      * Chapter.
      *
@@ -353,7 +351,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->year;
     }
-     
+
     /**
      * Year.
      *
@@ -373,7 +371,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->pages;
     }
-     
+
     /**
      * Pages.
      *
@@ -393,7 +391,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->source;
     }
-     
+
     /**
      * Source.
      *
@@ -413,7 +411,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->series_title_number;
     }
-     
+
     /**
      * Series title number
      *
@@ -433,7 +431,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->pmid;
     }
-     
+
     /**
      * PMID
      *
@@ -453,7 +451,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->doi;
     }
-     
+
     /**
      * DOI
      *
@@ -473,7 +471,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->volume;
     }
-     
+
     /**
      * Volume.
      *
@@ -493,7 +491,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->start_page;
     }
-     
+
     /**
      * Start page.
      *
@@ -513,7 +511,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->end_page;
     }
-     
+
     /**
      * End page.
      *
@@ -533,7 +531,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->author_initials;
     }
-     
+
     /**
      * Author initials
      *
@@ -553,7 +551,7 @@ class Metadata extends Record
     {
         return (string) $this->json()->part;
     }
-     
+
     /**
      * Part.
      *

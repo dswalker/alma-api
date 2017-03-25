@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Citation Tag Object.
@@ -27,13 +25,13 @@ class CitationTag extends Record
      * 
      * Possible codes are listed in 'TagTypes' code tables.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getType()
     {
         return $this->json()->type;
     }
-     
+
     /**
      * The type of the tag.
      * 
@@ -52,13 +50,13 @@ class CitationTag extends Record
      * 
      * Possible codes are listed in 'PublicTags' or 'LibraryTags' code tables.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getValue()
     {
         return $this->json()->value;
     }
-     
+
     /**
      * The value of the tag.
      * 

@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * The different attributes types. Mandatory.
@@ -26,13 +24,13 @@ class TypeAttributes extends Record
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributes' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getAttribute()
     {
         return $this->json()->attribute;
     }
-     
+
     /**
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributes' code table.
@@ -49,13 +47,13 @@ class TypeAttributes extends Record
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributesTypes' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getAttributeType()
     {
         return $this->json()->attribute_type;
     }
-     
+
     /**
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributesTypes' code table.

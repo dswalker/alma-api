@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Reading-List Object.
@@ -33,7 +31,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->id;
     }
-     
+
     /**
      * Identifier of the Reading List in Alma. Output parameter.
      * 
@@ -57,7 +55,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->code;
     }
-     
+
     /**
      * Code of the Reading List.
      * 
@@ -79,7 +77,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->name;
     }
-     
+
     /**
      * Name of the Reading List. Mandatory.
      *
@@ -99,7 +97,7 @@ class ReadingList extends Record
     {
         return $this->stringToDate((string) $this->json()->due_back_date);
     }
-     
+
     /**
      * The Reading List due back date.
      *
@@ -116,13 +114,13 @@ class ReadingList extends Record
      * 
      * Possible values are listed in the 'ReadingListStatuses' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getStatus()
     {
         return $this->json()->status;
     }
-     
+
     /**
      * The status of the reading list, such as ReadyForProcessing=Ready For
      * Processing etc.
@@ -145,14 +143,14 @@ class ReadingList extends Record
     public function getNotes()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->notes as $note) {
             $final[] = new Note($note);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * The reading list's related notes.
      *
@@ -161,7 +159,7 @@ class ReadingList extends Record
     public function setNotes(array $notes)
     {
         $this->json()->notes = array();
-            
+
         foreach ($notes as $note) {
             $this->json()->notes[] = $note->json();
         } 
@@ -175,14 +173,14 @@ class ReadingList extends Record
     public function getCitations()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->citations as $citation) {
             $final[] = new Citation($citation);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * List of Citations
      *
@@ -191,7 +189,7 @@ class ReadingList extends Record
     public function setCitations(array $citations)
     {
         $this->json()->citations = array();
-            
+
         foreach ($citations as $citation) {
             $this->json()->citations[] = $citation->json();
         } 

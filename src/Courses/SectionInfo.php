@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Information regarding the related Section.
@@ -31,7 +29,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->id;
     }
-     
+
     /**
      * Identifier of the Section. Output parameter.
      *
@@ -51,7 +49,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->name;
     }
-     
+
     /**
      * Name of the Section. Output parameter.
      *
@@ -71,7 +69,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->description;
     }
-     
+
     /**
      * Description of the Section. Output parameter.
      *

@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Courses;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * A course instructor.
@@ -31,7 +29,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->primary_id;
     }
-     
+
     /**
      * The primary identifier of the instructor.
      *
@@ -51,7 +49,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->first_name;
     }
-     
+
     /**
      * The instructor's first name. Output parameter.
      *
@@ -71,7 +69,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->last_name;
     }
-     
+
     /**
      * The instructor's last name. Output parameter.
      *
