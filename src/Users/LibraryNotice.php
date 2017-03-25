@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's library notice.
@@ -27,13 +25,13 @@ class LibraryNotice extends Record
      * 
      * Possible codes are listed in 'Library Notices Opt In Display' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getCode()
     {
         return $this->json()->code;
     }
-     
+
     /**
      * The code of the library notice.
      * 
@@ -56,7 +54,7 @@ class LibraryNotice extends Record
     {
         return (bool) $this->json()->value;
     }
-     
+
     /**
      * Value
      *

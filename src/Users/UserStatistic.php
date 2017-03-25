@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user statistic.
@@ -27,13 +25,13 @@ class UserStatistic extends Record
      * 
      * Possible codes are listed in 'User Statistical Categories' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getStatisticCategory()
     {
         return $this->json()->statistic_category;
     }
-     
+
     /**
      * The statistic's Categories.
      * 
@@ -53,13 +51,13 @@ class UserStatistic extends Record
      * Possible codes are listed in 'User Category Types' code table. Output
      * parameter.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getCategoryType()
     {
         return $this->json()->category_type;
     }
-     
+
     /**
      * The statistic's type.
      * 
@@ -83,7 +81,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->statistic_note;
     }
-     
+
     /**
      * The statistic's related note.
      *
@@ -108,7 +106,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's note.
@@ -27,13 +25,13 @@ class UserNote extends Record
      * 
      * Possible codes are listed in the 'Note Types' code table. Mandatory.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getNoteType()
     {
         return $this->json()->note_type;
     }
-     
+
     /**
      * The note's type.
      * 
@@ -58,7 +56,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->note_text;
     }
-     
+
     /**
      * The note's text.
      * 
@@ -82,7 +80,7 @@ class UserNote extends Record
     {
         return (bool) $this->json()->user_viewable;
     }
-     
+
     /**
      * Indication whether the user is able to view the note.
      * 
@@ -104,7 +102,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->created_by;
     }
-     
+
     /**
      * Creator of the note.
      *
@@ -124,7 +122,7 @@ class UserNote extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-     
+
     /**
      * Creation date of the note.
      *
@@ -132,11 +130,7 @@ class UserNote extends Record
      */
     public function setCreatedDate($created_date)
     {
-        $this->json()->created_date = array();
-            
-        foreach ($created_date as $created_dat) {
-            $this->json()->created_date[] = $created_dat->json();
-        } 
+        $this->json()->created_date = $created_date;
     }
 
     /**
@@ -153,7 +147,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

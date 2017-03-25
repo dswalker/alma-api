@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * List of the user's contacts information.
@@ -40,14 +38,14 @@ class ContactInfo extends Record
     public function getAddresses()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->addresses as $addresse) {
             $final[] = new Addresse($addresse);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * List of user's addresses.
      *
@@ -56,7 +54,7 @@ class ContactInfo extends Record
     public function setAddresses(array $addresses)
     {
         $this->json()->addresses = array();
-            
+
         foreach ($addresses as $addresse) {
             $this->json()->addresses[] = $addresse->json();
         } 
@@ -70,14 +68,14 @@ class ContactInfo extends Record
     public function getEmails()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->emails as $email) {
             $final[] = new Email($email);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * List of user's email addresses.
      *
@@ -86,7 +84,7 @@ class ContactInfo extends Record
     public function setEmails(array $emails)
     {
         $this->json()->emails = array();
-            
+
         foreach ($emails as $email) {
             $this->json()->emails[] = $email->json();
         } 
@@ -100,14 +98,14 @@ class ContactInfo extends Record
     public function getPhones()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->phones as $phone) {
             $final[] = new Phone($phone);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * List of user's phone numbers.
      *
@@ -116,7 +114,7 @@ class ContactInfo extends Record
     public function setPhones(array $phones)
     {
         $this->json()->phones = array();
-            
+
         foreach ($phones as $phone) {
             $this->json()->phones[] = $phone->json();
         } 

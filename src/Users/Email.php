@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's email address.
@@ -31,7 +29,7 @@ class Email extends Record
     {
         return (string) $this->json()->email_address;
     }
-     
+
     /**
      * The email address. Mandatory.
      *
@@ -51,7 +49,7 @@ class Email extends Record
     {
         return (string) $this->json()->description;
     }
-     
+
     /**
      * The email address' related description.
      *
@@ -65,22 +63,22 @@ class Email extends Record
     /**
      * Email types
      *
-     * @return ValueList
+     * @return Alma\Utils\ValueList
      */
     public function getEmailTypes()
     {
         return $this->getValueList('email_types');
     }
-     
+
     /**
      * Email types
      *
-     * @param ValueList $email_types
+     * @param Alma\Utils\ValueList $email_types
      */
-    public function setEmailTypes(ValueList $email_types)
+    public function setEmailTypes(Alma\Utils\ValueList $email_types)
     {
         $this->json()->email_type = array();
-            
+
         foreach ($email_types as $email_type) {
             $this->json()->email_type[] = $email_type;
         } 
@@ -97,7 +95,7 @@ class Email extends Record
     {
         return (bool) $this->json()->preferred;
     }
-     
+
     /**
      * Indication whether the email address is the preferred one.
      * 
@@ -124,7 +122,7 @@ class Email extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

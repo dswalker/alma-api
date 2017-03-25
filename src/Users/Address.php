@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's address.
@@ -33,7 +31,7 @@ class Address extends Record
     {
         return (string) $this->json()->line1;
     }
-     
+
     /**
      * Line 1 of the address.
      * 
@@ -55,7 +53,7 @@ class Address extends Record
     {
         return (string) $this->json()->line2;
     }
-     
+
     /**
      * Line 2 of the address.
      *
@@ -75,7 +73,7 @@ class Address extends Record
     {
         return (string) $this->json()->line3;
     }
-     
+
     /**
      * Line 3 of the address.
      *
@@ -95,7 +93,7 @@ class Address extends Record
     {
         return (string) $this->json()->line4;
     }
-     
+
     /**
      * Line 4 of the address.
      *
@@ -115,7 +113,7 @@ class Address extends Record
     {
         return (string) $this->json()->line5;
     }
-     
+
     /**
      * Line 5 of the address.
      *
@@ -137,7 +135,7 @@ class Address extends Record
     {
         return (string) $this->json()->city;
     }
-     
+
     /**
      * The address' relevant city.
      * 
@@ -159,7 +157,7 @@ class Address extends Record
     {
         return (string) $this->json()->state_province;
     }
-     
+
     /**
      * The address' relevant state.
      *
@@ -179,7 +177,7 @@ class Address extends Record
     {
         return (string) $this->json()->postal_code;
     }
-     
+
     /**
      * The address' relevant postal code.
      *
@@ -195,13 +193,13 @@ class Address extends Record
      * 
      * Possible codes are listed in the 'Country Codes' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getCountry()
     {
         return $this->json()->country;
     }
-     
+
     /**
      * The address' relevant country.
      * 
@@ -224,7 +222,7 @@ class Address extends Record
     {
         return (string) $this->json()->address_note;
     }
-     
+
     /**
      * The address' related note.
      *
@@ -244,7 +242,7 @@ class Address extends Record
     {
         return $this->stringToDate((string) $this->json()->start_date);
     }
-     
+
     /**
      * The date from which the address is deemed to be active.
      *
@@ -264,7 +262,7 @@ class Address extends Record
     {
         return $this->stringToDate((string) $this->json()->end_date);
     }
-     
+
     /**
      * The date after which the address is no longer active.
      *
@@ -280,24 +278,24 @@ class Address extends Record
      * 
      * Mandatory.
      *
-     * @return ValueList
+     * @return Alma\Utils\ValueList
      */
     public function getAddressTypes()
     {
         return $this->getValueList('address_types');
     }
-     
+
     /**
      * Address types.
      * 
      * Mandatory.
      *
-     * @param ValueList $address_types
+     * @param Alma\Utils\ValueList $address_types
      */
-    public function setAddressTypes(ValueList $address_types)
+    public function setAddressTypes(Alma\Utils\ValueList $address_types)
     {
         $this->json()->address_type = array();
-            
+
         foreach ($address_types as $address_type) {
             $this->json()->address_type[] = $address_type;
         } 
@@ -314,7 +312,7 @@ class Address extends Record
     {
         return (bool) $this->json()->preferred;
     }
-     
+
     /**
      * Indication whether the address is the preferred one.
      * 
@@ -341,7 +339,7 @@ class Address extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

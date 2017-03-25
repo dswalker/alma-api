@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's identifier.
@@ -27,13 +25,13 @@ class UserIdentifier extends Record
      * 
      * Possible codes are listed in 'User Identifier Type' code table. Mandatory.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getIdType()
     {
         return $this->json()->id_type;
     }
-     
+
     /**
      * The identifier type.
      * 
@@ -58,7 +56,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->value;
     }
-     
+
     /**
      * The identifier value.
      * 
@@ -80,7 +78,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->note;
     }
-     
+
     /**
      * identifier's note.
      *
@@ -100,7 +98,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->status;
     }
-     
+
     /**
      * identifier's status.
      *
@@ -125,7 +123,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

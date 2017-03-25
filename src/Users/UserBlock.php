@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * A specific user's block.
@@ -28,13 +26,13 @@ class UserBlock extends Record
      * Possible codes are listed in the 'User Block Types' code table. Default is
      * 'GENERAL'.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getBlockType()
     {
         return $this->json()->block_type;
     }
-     
+
     /**
      * The block type.
      * 
@@ -55,13 +53,13 @@ class UserBlock extends Record
      * Mandatory. Possible codes are listed in the 'User Block Description' code
      * table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getBlockDescription()
     {
         return $this->json()->block_description;
     }
-     
+
     /**
      * The block's description.
      * 
@@ -87,7 +85,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_status;
     }
-     
+
     /**
      * The block's status.
      * 
@@ -109,7 +107,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_note;
     }
-     
+
     /**
      * The block's related note.
      *
@@ -129,7 +127,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->created_by;
     }
-     
+
     /**
      * Creator of the block
      *
@@ -149,7 +147,7 @@ class UserBlock extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-     
+
     /**
      * Creation date of the block
      *
@@ -157,11 +155,7 @@ class UserBlock extends Record
      */
     public function setCreatedDate($created_date)
     {
-        $this->json()->created_date = array();
-            
-        foreach ($created_date as $created_dat) {
-            $this->json()->created_date[] = $created_dat->json();
-        } 
+        $this->json()->created_date = $created_date;
     }
 
     /**
@@ -178,7 +172,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->segment_type;
     }
-     
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

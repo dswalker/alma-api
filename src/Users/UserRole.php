@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Specific user's role.
@@ -29,13 +27,13 @@ class UserRole extends Record
      * empty, default value is Active, if an illegal value is given, default is
      * Inactive.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getStatus()
     {
         return $this->json()->status;
     }
-     
+
     /**
      * The user's role status.
      * 
@@ -54,13 +52,13 @@ class UserRole extends Record
     /**
      * The campus/library to which the role applies.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getScope()
     {
         return $this->json()->scope;
     }
-     
+
     /**
      * The campus/library to which the role applies.
      *
@@ -77,13 +75,13 @@ class UserRole extends Record
      * 
      * Possible codes are listed in 'User Roles' code table.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getRoleType()
     {
         return $this->json()->role_type;
     }
-     
+
     /**
      * The user's role.
      * 
@@ -106,7 +104,7 @@ class UserRole extends Record
     {
         return $this->stringToDate((string) $this->json()->expiry_date);
     }
-     
+
     /**
      * The date after which the user no longer has the role.
      *
@@ -125,14 +123,14 @@ class UserRole extends Record
     public function getParameters()
     {
         $final = array();
-        
+
         foreach ((array) $this->json()->parameters as $parameter) {
             $final[] = new Parameter($parameter);
         }
-        
+
         return $final;
     }
-     
+
     /**
      * Role's related parameters.
      *
@@ -141,7 +139,7 @@ class UserRole extends Record
     public function setParameters(array $parameters)
     {
         $this->json()->parameters = array();
-            
+
         foreach ($parameters as $parameter) {
             $this->json()->parameters[] = $parameter->json();
         } 

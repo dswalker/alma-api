@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * Role's specific parameter.
@@ -27,13 +25,13 @@ class Parameter extends Record
      * 
      * Possible values: CirculationDesk, MetadataType, ServiceUnit.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getType()
     {
         return $this->json()->type;
     }
-     
+
     /**
      * The parameter's type.
      * 
@@ -50,13 +48,13 @@ class Parameter extends Record
     /**
      * Parameter's related value.
      *
-     * @return Value
+     * @return Alma\Utils\Value
      */
     public function getValue()
     {
         return $this->json()->value;
     }
-     
+
     /**
      * Parameter's related value.
      *

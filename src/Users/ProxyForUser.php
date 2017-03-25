@@ -10,10 +10,8 @@
  */
 
 namespace Alma\Users;
- 
+
 use Alma\Utils\Record;
-use Alma\Utils\Value;
-use Alma\Utils\ValueList;
 
 /**
  * A particular proxy for a user.
@@ -31,7 +29,7 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->primary_id;
     }
-     
+
     /**
      * The primary identifier.
      *
@@ -51,7 +49,7 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->full_name;
     }
-     
+
     /**
      * The user's first and last name.
      *
