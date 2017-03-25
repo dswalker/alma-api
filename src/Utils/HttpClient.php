@@ -159,6 +159,7 @@ class HttpClient
         }
         
         // construct base url
+        
         if (substr($uri, 0, 4) == 'http') {
             $url = $uri; // already a full url
         } else {
@@ -174,7 +175,7 @@ class HttpClient
             if ( $value == "") {
                 continue;
             }
-            $url .= '&' . $key . urlencode($value);
+            $url .= '&' . $key . '=' . urlencode($value);
         }
         
         $url .= '&apikey=' . Alma::$api_key;
