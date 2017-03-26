@@ -31,7 +31,7 @@ class UserStatistic extends Record
     {
         return $this->json()->statistic_category;
     }
-
+    
     /**
      * The statistic's Categories.
      * 
@@ -57,7 +57,7 @@ class UserStatistic extends Record
     {
         return $this->json()->category_type;
     }
-
+    
     /**
      * The statistic's type.
      * 
@@ -81,7 +81,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->statistic_note;
     }
-
+    
     /**
      * The statistic's related note.
      *
@@ -106,7 +106,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->segment_type;
     }
-
+    
     /**
      * The type of the segment ("Internal" or "External").
      * 

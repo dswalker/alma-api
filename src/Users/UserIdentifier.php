@@ -31,7 +31,7 @@ class UserIdentifier extends Record
     {
         return $this->json()->id_type;
     }
-
+    
     /**
      * The identifier type.
      * 
@@ -56,7 +56,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->value;
     }
-
+    
     /**
      * The identifier value.
      * 
@@ -78,7 +78,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->note;
     }
-
+    
     /**
      * identifier's note.
      *
@@ -98,7 +98,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->status;
     }
-
+    
     /**
      * identifier's status.
      *
@@ -123,7 +123,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->segment_type;
     }
-
+    
     /**
      * The type of the segment ("Internal" or "External").
      * 

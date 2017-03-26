@@ -33,7 +33,7 @@ class User extends Record
     {
         return $this->json()->record_type;
     }
-
+    
     /**
      * The type of user record.
      * 
@@ -62,7 +62,7 @@ class User extends Record
     {
         return (string) $this->json()->primary_id;
     }
-
+    
     /**
      * The primary identifier of the user.
      * 
@@ -86,7 +86,7 @@ class User extends Record
     {
         return (string) $this->json()->first_name;
     }
-
+    
     /**
      * The user's first name.
      *
@@ -106,7 +106,7 @@ class User extends Record
     {
         return (string) $this->json()->middle_name;
     }
-
+    
     /**
      * The user's middle name.
      *
@@ -126,7 +126,7 @@ class User extends Record
     {
         return (string) $this->json()->last_name;
     }
-
+    
     /**
      * The user's last name.
      *
@@ -146,34 +146,7 @@ class User extends Record
     {
         return (string) $this->json()->full_name;
     }
-
-    /**
-     * The user's full name. Output parameter.
-     *
-     * @param string $full_name
-     */
-    public function setFullName($full_name)
-    {
-        $this->json()->full_name = $full_name;
-    }
-
-    /**
-     * A four-digit number which serves as a password for the user to log on to
-     * the selfcheck machine (SIP2).
-     * 
-     * On SIS synch this field will not be replaced if it was updated manually (or
-     * if empty in the incoming user record). For external users in PUT action:
-     * this field will not be replaced if it was updated manually (or if empty in
-     * the incoming user record), unless 'override' parameter is sent with the
-     * field's name. See blog for more details.
-     *
-     * @return string
-     */
-    public function getPinNumber()
-    {
-        return (string) $this->json()->pin_number;
-    }
-
+    
     /**
      * A four-digit number which serves as a password for the user to log on to
      * the selfcheck machine (SIP2).
@@ -189,23 +162,6 @@ class User extends Record
     public function setPinNumber($pin_number)
     {
         $this->json()->pin_number = $pin_number;
-    }
-
-    /**
-     * The user's title
-     * 
-     * Possible codes are listed in the 'UserTitles' code table. On SIS synch this
-     * field will not be replaced if it was updated manually (or if empty in the
-     * incoming user record). For external users in PUT action: this field will
-     * not be replaced if it was updated manually (or if empty in the incoming
-     * user record), unless 'override' parameter is sent with the field's name.
-     * See blog for more details.
-     *
-     * @return Alma\Utils\Value
-     */
-    public function getUserTitle()
-    {
-        return $this->json()->user_title;
     }
 
     /**
@@ -243,7 +199,7 @@ class User extends Record
     {
         return $this->json()->job_category;
     }
-
+    
     /**
      * The types of jobs the user performs in the library, such as Cataloger,
      * Circulation Desk Operator, and so forth.
@@ -272,7 +228,7 @@ class User extends Record
     {
         return (string) $this->json()->job_description;
     }
-
+    
     /**
      * General description of the user's job.
      *
@@ -294,7 +250,7 @@ class User extends Record
     {
         return $this->json()->gender;
     }
-
+    
     /**
      * The user's gender.
      * 
@@ -325,7 +281,7 @@ class User extends Record
     {
         return $this->json()->user_group;
     }
-
+    
     /**
      * The group within the institution to which the user belongs.
      * 
@@ -361,7 +317,7 @@ class User extends Record
     {
         return $this->json()->campus_code;
     }
-
+    
     /**
      * The code of the campus related to the user.
      * 
@@ -389,7 +345,7 @@ class User extends Record
     {
         return (string) $this->json()->web_site_url;
     }
-
+    
     /**
      * The web site address related to the user.
      *
@@ -412,7 +368,7 @@ class User extends Record
     {
         return $this->json()->cataloger_level;
     }
-
+    
     /**
      * The cataloger level of the user.
      * 
@@ -444,7 +400,7 @@ class User extends Record
     {
         return $this->json()->preferred_language;
     }
-
+    
     /**
      * The user's preferred language.
      * 
@@ -473,7 +429,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->birth_date);
     }
-
+    
     /**
      * The user's birth date.
      *
@@ -493,7 +449,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->expiry_date);
     }
-
+    
     /**
      * The estimated date when the user is expected to leave the institution.
      *
@@ -513,7 +469,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->purge_date);
     }
-
+    
     /**
      * The date on which the user is purged from the system.
      *
@@ -538,7 +494,7 @@ class User extends Record
     {
         return $this->json()->account_type;
     }
-
+    
     /**
      * The user's account type.
      * 
@@ -569,7 +525,7 @@ class User extends Record
     {
         return (string) $this->json()->external_id;
     }
-
+    
     /**
      * The external system from which the user was loaded into Alma. Relevant only
      * for External users.
@@ -592,36 +548,11 @@ class User extends Record
      * in the PUT action password can be updated, but if left empty - the existing
      * password will be kept.
      *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return (string) $this->json()->password;
-    }
-
-    /**
-     * user's password. Relevant for internal users only.
-     * 
-     * Due to security issues, it is returned empty in the GET action. Note that
-     * in the PUT action password can be updated, but if left empty - the existing
-     * password will be kept.
-     *
      * @param string $password
      */
     public function setPassword($password)
     {
         $this->json()->password = $password;
-    }
-
-    /**
-     * Set this field to 'TRUE' to prompt user to change the password on next log
-     * in. Relevant for internal users only.
-     *
-     * @return string
-     */
-    public function getForcePasswordChange()
-    {
-        return (string) $this->json()->force_password_change;
     }
 
     /**
@@ -647,7 +578,7 @@ class User extends Record
     {
         return $this->json()->status;
     }
-
+    
     /**
      * Status of user account.
      * 
@@ -673,19 +604,7 @@ class User extends Record
     {
         return (int) $this->json()->requests;
     }
-
-    /**
-     * Number of requests for user.
-     * 
-     * Output parameter.
-     *
-     * @param int $requests
-     */
-    public function setRequests($requests)
-    {
-        $this->json()->requests = $requests;
-    }
-
+    
     /**
      * Number of loans for user.
      * 
@@ -697,19 +616,7 @@ class User extends Record
     {
         return (int) $this->json()->loans;
     }
-
-    /**
-     * Number of loans for user.
-     * 
-     * Output parameter.
-     *
-     * @param int $loans
-     */
-    public function setLoans($loans)
-    {
-        $this->json()->loans = $loans;
-    }
-
+    
     /**
      * Fines/fees active balance for user
      * 
@@ -721,19 +628,7 @@ class User extends Record
     {
         return (float) $this->json()->fees;
     }
-
-    /**
-     * Fines/fees active balance for user
-     * 
-     * Output parameter.
-     *
-     * @param float $fees
-     */
-    public function setFees($fees)
-    {
-        $this->json()->fees = $fees;
-    }
-
+    
     /**
      * List of the user's contacts information.
      *
@@ -743,7 +638,7 @@ class User extends Record
     {
         return $this->json()->contact_info;
     }
-
+    
     /**
      * List of the user's contacts information.
      *
@@ -763,13 +658,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_identifiers as $user_identifier) {
+        foreach ((array) $this->json()->user_identifiers->user_identifier as $user_identifier) {
             $final[] = new UserIdentifier($user_identifier);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's additional identifiers.
      *
@@ -777,10 +672,10 @@ class User extends Record
      */
     public function setUserIdentifiers(array $user_identifiers)
     {
-        $this->json()->user_identifiers = array();
+        $this->json()->user_identifiers->user_identifier = array();
 
         foreach ($user_identifiers as $user_identifier) {
-            $this->json()->user_identifiers[] = $user_identifier->json();
+            $this->json()->user_identifiers->user_identifier[] = $user_identifier->json();
         } 
     }
 
@@ -804,13 +699,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_roles as $user_role) {
+        foreach ((array) $this->json()->user_roles->user_role as $user_role) {
             $final[] = new UserRole($user_role);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's roles.
      * 
@@ -829,10 +724,10 @@ class User extends Record
      */
     public function setUserRoles(array $user_roles)
     {
-        $this->json()->user_roles = array();
+        $this->json()->user_roles->user_role = array();
 
         foreach ($user_roles as $user_role) {
-            $this->json()->user_roles[] = $user_role->json();
+            $this->json()->user_roles->user_role[] = $user_role->json();
         } 
     }
 
@@ -845,13 +740,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_blocks as $user_block) {
+        foreach ((array) $this->json()->user_blocks->user_block as $user_block) {
             $final[] = new UserBlock($user_block);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's blocks.
      *
@@ -859,10 +754,10 @@ class User extends Record
      */
     public function setUserBlocks(array $user_blocks)
     {
-        $this->json()->user_blocks = array();
+        $this->json()->user_blocks->user_block = array();
 
         foreach ($user_blocks as $user_block) {
-            $this->json()->user_blocks[] = $user_block->json();
+            $this->json()->user_blocks->user_block[] = $user_block->json();
         } 
     }
 
@@ -875,13 +770,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_notes as $user_note) {
+        foreach ((array) $this->json()->user_notes->user_note as $user_note) {
             $final[] = new UserNote($user_note);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's related notes.
      *
@@ -889,10 +784,10 @@ class User extends Record
      */
     public function setUserNotes(array $user_notes)
     {
-        $this->json()->user_notes = array();
+        $this->json()->user_notes->user_note = array();
 
         foreach ($user_notes as $user_note) {
-            $this->json()->user_notes[] = $user_note->json();
+            $this->json()->user_notes->user_note[] = $user_note->json();
         } 
     }
 
@@ -905,13 +800,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_statistics as $user_statistic) {
+        foreach ((array) $this->json()->user_statistics->user_statistic as $user_statistic) {
             $final[] = new UserStatistic($user_statistic);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's related statistics.
      *
@@ -919,10 +814,10 @@ class User extends Record
      */
     public function setUserStatistics(array $user_statistics)
     {
-        $this->json()->user_statistics = array();
+        $this->json()->user_statistics->user_statistic = array();
 
         foreach ($user_statistics as $user_statistic) {
-            $this->json()->user_statistics[] = $user_statistic->json();
+            $this->json()->user_statistics->user_statistic[] = $user_statistic->json();
         } 
     }
 
@@ -935,27 +830,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->proxy_for_users as $proxy_for_user) {
+        foreach ((array) $this->json()->proxy_for_users->proxy_for_user as $proxy_for_user) {
             $final[] = new ProxyForUser($proxy_for_user);
         }
 
         return $final;
     }
-
-    /**
-     * A list of the user's proxy users
-     *
-     * @param ProxyForUser[] $proxy_for_users
-     */
-    public function setProxyForUsers(array $proxy_for_users)
-    {
-        $this->json()->proxy_for_users = array();
-
-        foreach ($proxy_for_users as $proxy_for_user) {
-            $this->json()->proxy_for_users[] = $proxy_for_user->json();
-        } 
-    }
-
+    
     /**
      * List of the user's related resource sharing libraries.
      * 
@@ -971,13 +852,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->rs_libraries as $rs_librarie) {
+        foreach ((array) $this->json()->rs_libraries->rs_librarie as $rs_librarie) {
             $final[] = new RsLibrary($rs_librarie);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's related resource sharing libraries.
      * 
@@ -991,10 +872,10 @@ class User extends Record
      */
     public function setRsLibraries(array $rs_libraries)
     {
-        $this->json()->rs_libraries = array();
+        $this->json()->rs_libraries->rs_librarie = array();
 
         foreach ($rs_libraries as $rs_librarie) {
-            $this->json()->rs_libraries[] = $rs_librarie->json();
+            $this->json()->rs_libraries->rs_librarie[] = $rs_librarie->json();
         } 
     }
 
@@ -1013,13 +894,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->library_notices as $library_notice) {
+        foreach ((array) $this->json()->library_notices->library_notice as $library_notice) {
             $final[] = new LibraryNotice($library_notice);
         }
 
         return $final;
     }
-
+    
     /**
      * List of the user's library notices.
      * 
@@ -1033,10 +914,10 @@ class User extends Record
      */
     public function setLibraryNotices(array $library_notices)
     {
-        $this->json()->library_notices = array();
+        $this->json()->library_notices->library_notice = array();
 
         foreach ($library_notices as $library_notice) {
-            $this->json()->library_notices[] = $library_notice->json();
+            $this->json()->library_notices->library_notice[] = $library_notice->json();
         } 
     }
 }

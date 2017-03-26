@@ -29,17 +29,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->id;
     }
-
-    /**
-     * Identifier of the Section. Output parameter.
-     *
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->json()->id = $id;
-    }
-
+    
     /**
      * Name of the Section. Output parameter.
      *
@@ -49,17 +39,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->name;
     }
-
-    /**
-     * Name of the Section. Output parameter.
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->json()->name = $name;
-    }
-
+    
     /**
      * Description of the Section. Output parameter.
      *
@@ -69,14 +49,4 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->description;
     }
-
-    /**
-     * Description of the Section. Output parameter.
-     *
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->json()->description = $description;
     }
-}

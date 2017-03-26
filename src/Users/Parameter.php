@@ -31,7 +31,7 @@ class Parameter extends Record
     {
         return $this->json()->type;
     }
-
+    
     /**
      * The parameter's type.
      * 
@@ -54,7 +54,7 @@ class Parameter extends Record
     {
         return $this->json()->value;
     }
-
+    
     /**
      * Parameter's related value.
      *

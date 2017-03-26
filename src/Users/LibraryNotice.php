@@ -31,7 +31,7 @@ class LibraryNotice extends Record
     {
         return $this->json()->code;
     }
-
+    
     /**
      * The code of the library notice.
      * 
@@ -54,7 +54,7 @@ class LibraryNotice extends Record
     {
         return (bool) $this->json()->value;
     }
-
+    
     /**
      * Value
      *

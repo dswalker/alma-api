@@ -31,7 +31,7 @@ class UserNote extends Record
     {
         return $this->json()->note_type;
     }
-
+    
     /**
      * The note's type.
      * 
@@ -56,7 +56,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->note_text;
     }
-
+    
     /**
      * The note's text.
      * 
@@ -80,7 +80,7 @@ class UserNote extends Record
     {
         return (bool) $this->json()->user_viewable;
     }
-
+    
     /**
      * Indication whether the user is able to view the note.
      * 
@@ -102,7 +102,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->created_by;
     }
-
+    
     /**
      * Creator of the note.
      *
@@ -122,7 +122,7 @@ class UserNote extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-
+    
     /**
      * Creation date of the note.
      *
@@ -147,7 +147,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->segment_type;
     }
-
+    
     /**
      * The type of the segment ("Internal" or "External").
      * 

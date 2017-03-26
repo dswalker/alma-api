@@ -33,7 +33,7 @@ class UserRole extends Record
     {
         return $this->json()->status;
     }
-
+    
     /**
      * The user's role status.
      * 
@@ -58,7 +58,7 @@ class UserRole extends Record
     {
         return $this->json()->scope;
     }
-
+    
     /**
      * The campus/library to which the role applies.
      *
@@ -81,7 +81,7 @@ class UserRole extends Record
     {
         return $this->json()->role_type;
     }
-
+    
     /**
      * The user's role.
      * 
@@ -104,7 +104,7 @@ class UserRole extends Record
     {
         return $this->stringToDate((string) $this->json()->expiry_date);
     }
-
+    
     /**
      * The date after which the user no longer has the role.
      *
@@ -124,13 +124,13 @@ class UserRole extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->parameters as $parameter) {
+        foreach ((array) $this->json()->parameters->parameter as $parameter) {
             $final[] = new Parameter($parameter);
         }
 
         return $final;
     }
-
+    
     /**
      * Role's related parameters.
      *
@@ -138,10 +138,10 @@ class UserRole extends Record
      */
     public function setParameters(array $parameters)
     {
-        $this->json()->parameters = array();
+        $this->json()->parameters->parameter = array();
 
         foreach ($parameters as $parameter) {
-            $this->json()->parameters[] = $parameter->json();
+            $this->json()->parameters->parameter[] = $parameter->json();
         } 
     }
 }

@@ -31,19 +31,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->id;
     }
-
-    /**
-     * Identifier of the Reading List in Alma. Output parameter.
-     * 
-     * Should be used in subsequent queries regarding the Reading List.
-     *
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->json()->id = $id;
-    }
-
+    
     /**
      * Code of the Reading List.
      * 
@@ -55,7 +43,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->code;
     }
-
+    
     /**
      * Code of the Reading List.
      * 
@@ -77,7 +65,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->name;
     }
-
+    
     /**
      * Name of the Reading List. Mandatory.
      *
@@ -97,7 +85,7 @@ class ReadingList extends Record
     {
         return $this->stringToDate((string) $this->json()->due_back_date);
     }
-
+    
     /**
      * The Reading List due back date.
      *
@@ -120,7 +108,7 @@ class ReadingList extends Record
     {
         return $this->json()->status;
     }
-
+    
     /**
      * The status of the reading list, such as ReadyForProcessing=Ready For
      * Processing etc.
@@ -150,7 +138,7 @@ class ReadingList extends Record
 
         return $final;
     }
-
+    
     /**
      * The reading list's related notes.
      *
@@ -180,7 +168,7 @@ class ReadingList extends Record
 
         return $final;
     }
-
+    
     /**
      * List of Citations
      *

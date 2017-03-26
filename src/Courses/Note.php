@@ -29,7 +29,7 @@ class Note extends Record
     {
         return (string) $this->json()->content;
     }
-
+    
     /**
      * The note's text. Mandatory.
      *
@@ -49,7 +49,7 @@ class Note extends Record
     {
         return $this->stringToDate((string) $this->json()->creation_date);
     }
-
+    
     /**
      * The creation date of the note. Default is the current date.
      *
@@ -69,7 +69,7 @@ class Note extends Record
     {
         return (string) $this->json()->created_by;
     }
-
+    
     /**
      * The creator of the note.
      *

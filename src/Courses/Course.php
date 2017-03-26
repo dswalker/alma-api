@@ -31,19 +31,7 @@ class Course extends Record
     {
         return (string) $this->json()->id;
     }
-
-    /**
-     * Identifier of the course in Alma. Output parameter.
-     * 
-     * Should be used in subsequent queries regarding the course.
-     *
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->json()->id = $id;
-    }
-
+    
     /**
      * Code of the course in Alma. Cannot be updated.
      * 
@@ -56,7 +44,7 @@ class Course extends Record
     {
         return (string) $this->json()->code;
     }
-
+    
     /**
      * Code of the course in Alma. Cannot be updated.
      * 
@@ -79,7 +67,7 @@ class Course extends Record
     {
         return (string) $this->json()->name;
     }
-
+    
     /**
      * The course name. Mandatory.
      *
@@ -101,7 +89,7 @@ class Course extends Record
     {
         return (string) $this->json()->section;
     }
-
+    
     /**
      * The course section.
      * 
@@ -123,7 +111,7 @@ class Course extends Record
     {
         return $this->json()->academic_department;
     }
-
+    
     /**
      * The course faculty.
      *
@@ -144,7 +132,7 @@ class Course extends Record
     {
         return $this->json()->processing_department;
     }
-
+    
     /**
      * The code and name of the department processing the course. Mandatory.
      *
@@ -165,7 +153,7 @@ class Course extends Record
     {
         return $this->getValueList('terms');
     }
-
+    
     /**
      * List of terms.
      *
@@ -192,20 +180,7 @@ class Course extends Record
     {
         return (string) $this->json()->status;
     }
-
-    /**
-     * The status of the course: ACTIVE/INACTIVE.
-     * 
-     * Output parameter. When using XML for input, status will only be determined
-     * by the start and end date.
-     *
-     * @param string $status
-     */
-    public function setStatus($status)
-    {
-        $this->json()->status = $status;
-    }
-
+    
     /**
      * The course start date.
      *
@@ -215,7 +190,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->start_date);
     }
-
+    
     /**
      * The course start date.
      *
@@ -235,7 +210,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->end_date);
     }
-
+    
     /**
      * The course end date.
      *
@@ -255,7 +230,7 @@ class Course extends Record
     {
         return (int) $this->json()->weekly_hours;
     }
-
+    
     /**
      * The number of hours per week of the course.
      *
@@ -275,7 +250,7 @@ class Course extends Record
     {
         return (int) $this->json()->participants;
     }
-
+    
     /**
      * The number of course participants.
      *
@@ -295,7 +270,7 @@ class Course extends Record
     {
         return (string) $this->json()->year;
     }
-
+    
     /**
      * The course year.
      *
@@ -321,7 +296,7 @@ class Course extends Record
 
         return $final;
     }
-
+    
     /**
      * List of Instructors
      *
@@ -345,7 +320,7 @@ class Course extends Record
     {
         return (array) $this->json()->searchable_id;
     }
-
+    
     /**
      * A list of searchable IDs
      *
@@ -371,7 +346,7 @@ class Course extends Record
 
         return $final;
     }
-
+    
     /**
      * The course's related notes.
      *
@@ -401,7 +376,7 @@ class Course extends Record
 
         return $final;
     }
-
+    
     /**
      * A list of Reading Lists
      *

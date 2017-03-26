@@ -29,17 +29,7 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->primary_id;
     }
-
-    /**
-     * The primary identifier.
-     *
-     * @param string $primary_id
-     */
-    public function setPrimaryId($primary_id)
-    {
-        $this->json()->primary_id = $primary_id;
-    }
-
+    
     /**
      * The user's first and last name.
      *
@@ -49,14 +39,4 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->full_name;
     }
-
-    /**
-     * The user's first and last name.
-     *
-     * @param string $full_name
-     */
-    public function setFullName($full_name)
-    {
-        $this->json()->full_name = $full_name;
     }
-}

@@ -32,7 +32,7 @@ class UserBlock extends Record
     {
         return $this->json()->block_type;
     }
-
+    
     /**
      * The block type.
      * 
@@ -59,7 +59,7 @@ class UserBlock extends Record
     {
         return $this->json()->block_description;
     }
-
+    
     /**
      * The block's description.
      * 
@@ -85,7 +85,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_status;
     }
-
+    
     /**
      * The block's status.
      * 
@@ -107,7 +107,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_note;
     }
-
+    
     /**
      * The block's related note.
      *
@@ -127,7 +127,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->created_by;
     }
-
+    
     /**
      * Creator of the block
      *
@@ -147,7 +147,7 @@ class UserBlock extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-
+    
     /**
      * Creation date of the block
      *
@@ -172,7 +172,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->segment_type;
     }
-
+    
     /**
      * The type of the segment ("Internal" or "External").
      * 

@@ -30,7 +30,7 @@ class TypeAttributes extends Record
     {
         return $this->json()->attribute;
     }
-
+    
     /**
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributes' code table.
@@ -53,7 +53,7 @@ class TypeAttributes extends Record
     {
         return $this->json()->attribute_type;
     }
-
+    
     /**
      * Attribute of the citation. Possible codes are listed in
      * 'CitationAttributesTypes' code table.

@@ -39,13 +39,13 @@ class ContactInfo extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->addresses as $addresse) {
+        foreach ((array) $this->json()->addresses->addresse as $addresse) {
             $final[] = new Addresse($addresse);
         }
 
         return $final;
     }
-
+    
     /**
      * List of user's addresses.
      *
@@ -53,10 +53,10 @@ class ContactInfo extends Record
      */
     public function setAddresses(array $addresses)
     {
-        $this->json()->addresses = array();
+        $this->json()->addresses->addresse = array();
 
         foreach ($addresses as $addresse) {
-            $this->json()->addresses[] = $addresse->json();
+            $this->json()->addresses->addresse[] = $addresse->json();
         } 
     }
 
@@ -69,13 +69,13 @@ class ContactInfo extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->emails as $email) {
+        foreach ((array) $this->json()->emails->email as $email) {
             $final[] = new Email($email);
         }
 
         return $final;
     }
-
+    
     /**
      * List of user's email addresses.
      *
@@ -83,10 +83,10 @@ class ContactInfo extends Record
      */
     public function setEmails(array $emails)
     {
-        $this->json()->emails = array();
+        $this->json()->emails->email = array();
 
         foreach ($emails as $email) {
-            $this->json()->emails[] = $email->json();
+            $this->json()->emails->email[] = $email->json();
         } 
     }
 
@@ -99,13 +99,13 @@ class ContactInfo extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->phones as $phone) {
+        foreach ((array) $this->json()->phones->phone as $phone) {
             $final[] = new Phone($phone);
         }
 
         return $final;
     }
-
+    
     /**
      * List of user's phone numbers.
      *
@@ -113,10 +113,10 @@ class ContactInfo extends Record
      */
     public function setPhones(array $phones)
     {
-        $this->json()->phones = array();
+        $this->json()->phones->phone = array();
 
         foreach ($phones as $phone) {
-            $this->json()->phones[] = $phone->json();
+            $this->json()->phones->phone[] = $phone->json();
         } 
     }
 }

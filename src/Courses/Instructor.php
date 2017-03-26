@@ -29,7 +29,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->primary_id;
     }
-
+    
     /**
      * The primary identifier of the instructor.
      *
@@ -49,17 +49,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->first_name;
     }
-
-    /**
-     * The instructor's first name. Output parameter.
-     *
-     * @param string $first_name
-     */
-    public function setFirstName($first_name)
-    {
-        $this->json()->first_name = $first_name;
-    }
-
+    
     /**
      * The instructor's last name. Output parameter.
      *
@@ -69,17 +59,7 @@ class Instructor extends Record
     {
         return (string) $this->json()->last_name;
     }
-
-    /**
-     * The instructor's last name. Output parameter.
-     *
-     * @param string $last_name
-     */
-    public function setLastName($last_name)
-    {
-        $this->json()->last_name = $last_name;
-    }
-
+    
     /**
      * Required fields
      *

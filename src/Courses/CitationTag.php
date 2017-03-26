@@ -31,20 +31,7 @@ class CitationTag extends Record
     {
         return $this->json()->type;
     }
-
-    /**
-     * The type of the tag.
-     * 
-     * Possible codes are listed in 'TagTypes' code tables.
-     *
-     * @param string $value  value
-     * @param string $desc   [optional] description
-     */
-    public function setType($value, $desc = "")
-    {
-        $this->setValueObject('type', $value, $desc);
-    }
-
+    
     /**
      * The value of the tag.
      * 
@@ -56,17 +43,4 @@ class CitationTag extends Record
     {
         return $this->json()->value;
     }
-
-    /**
-     * The value of the tag.
-     * 
-     * Possible codes are listed in 'PublicTags' or 'LibraryTags' code tables.
-     *
-     * @param string $value  value
-     * @param string $desc   [optional] description
-     */
-    public function setValue($value, $desc = "")
-    {
-        $this->setValueObject('value', $value, $desc);
     }
-}
