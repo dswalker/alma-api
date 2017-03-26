@@ -351,13 +351,9 @@ class Course extends Record
      *
      * @param array $searchable_ids
      */
-    public function setSearchableIds(array $searchable_ids)
+    public function setSearchableIds(SearchableId $searchable_ids)
     {
-        $this->json()->searchable_id = array();
-
-        foreach ($searchable_ids as $searchable_id) {
-            $this->json()->searchable_id[] = $searchable_id;
-        } 
+        $this->json()->searchable_ids = $searchable_ids;
     }
 
     /**
@@ -369,7 +365,7 @@ class Course extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->notes as $note) {
+        foreach ((array) $this->json()->notes->note as $note) {
             $final[] = new Note($note);
         }
 
@@ -383,10 +379,10 @@ class Course extends Record
      */
     public function setNotes(array $notes)
     {
-        $this->json()->notes = array();
+        $this->json()->notes->note = array();
 
         foreach ($notes as $note) {
-            $this->json()->notes[] = $note->json();
+            $this->json()->notes->note[] = $note->json();
         } 
     }
 
@@ -399,7 +395,7 @@ class Course extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->reading_lists as $reading_list) {
+        foreach ((array) $this->json()->reading_lists->reading_list as $reading_list) {
             $final[] = new ReadingList($reading_list);
         }
 
@@ -413,10 +409,10 @@ class Course extends Record
      */
     public function setReadingLists(array $reading_lists)
     {
-        $this->json()->reading_lists = array();
+        $this->json()->reading_lists->reading_list = array();
 
         foreach ($reading_lists as $reading_list) {
-            $this->json()->reading_lists[] = $reading_list->json();
+            $this->json()->reading_lists->reading_list[] = $reading_list->json();
         } 
     }
 

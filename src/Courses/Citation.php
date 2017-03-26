@@ -252,7 +252,7 @@ class Citation extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->defined_fields as $defined_field) {
+        foreach ((array) $this->json()->defined_fields->defined_field as $defined_field) {
             $final[] = new DefinedField($defined_field);
         }
 
@@ -267,10 +267,10 @@ class Citation extends Record
      */
     public function setDefinedFields(array $defined_fields)
     {
-        $this->json()->defined_fields = array();
+        $this->json()->defined_fields->defined_field = array();
 
         foreach ($defined_fields as $defined_field) {
-            $this->json()->defined_fields[] = $defined_field->json();
+            $this->json()->defined_fields->defined_field[] = $defined_field->json();
         } 
     }
 
@@ -303,7 +303,7 @@ class Citation extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->citation_tags as $citation_tag) {
+        foreach ((array) $this->json()->citation_tags->citation_tag as $citation_tag) {
             $final[] = new CitationTag($citation_tag);
         }
 
@@ -317,10 +317,10 @@ class Citation extends Record
      */
     public function setCitationTags(array $citation_tags)
     {
-        $this->json()->citation_tags = array();
+        $this->json()->citation_tags->citation_tag = array();
 
         foreach ($citation_tags as $citation_tag) {
-            $this->json()->citation_tags[] = $citation_tag->json();
+            $this->json()->citation_tags->citation_tag[] = $citation_tag->json();
         } 
     }
 

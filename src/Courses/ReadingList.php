@@ -144,7 +144,7 @@ class ReadingList extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->notes as $note) {
+        foreach ((array) $this->json()->notes->note as $note) {
             $final[] = new Note($note);
         }
 
@@ -158,10 +158,10 @@ class ReadingList extends Record
      */
     public function setNotes(array $notes)
     {
-        $this->json()->notes = array();
+        $this->json()->notes->note = array();
 
         foreach ($notes as $note) {
-            $this->json()->notes[] = $note->json();
+            $this->json()->notes->note[] = $note->json();
         } 
     }
 
@@ -174,7 +174,7 @@ class ReadingList extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->citations as $citation) {
+        foreach ((array) $this->json()->citations->citation as $citation) {
             $final[] = new Citation($citation);
         }
 
@@ -188,10 +188,10 @@ class ReadingList extends Record
      */
     public function setCitations(array $citations)
     {
-        $this->json()->citations = array();
+        $this->json()->citations->citation = array();
 
         foreach ($citations as $citation) {
-            $this->json()->citations[] = $citation->json();
+            $this->json()->citations->citation[] = $citation->json();
         } 
     }
 
