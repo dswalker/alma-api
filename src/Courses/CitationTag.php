@@ -29,9 +29,9 @@ class CitationTag extends Record
      */
     public function getType()
     {
-        return $this->json()->type;
+        return $this->getValueObject('type');
     }
-    
+
     /**
      * The value of the tag.
      * 
@@ -41,6 +41,6 @@ class CitationTag extends Record
      */
     public function getValue()
     {
-        return $this->json()->value;
+        return $this->getValueObject('value');
     }
-    }
+}

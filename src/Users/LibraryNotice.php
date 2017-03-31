@@ -29,15 +29,15 @@ class LibraryNotice extends Record
      */
     public function getCode()
     {
-        return $this->json()->code;
+        return $this->getValueObject('code');
     }
-    
+
     /**
      * The code of the library notice.
      * 
      * Possible codes are listed in 'Library Notices Opt In Display' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setCode($value, $desc = "")
@@ -54,7 +54,7 @@ class LibraryNotice extends Record
     {
         return (bool) $this->json()->value;
     }
-    
+
     /**
      * Value
      *
@@ -62,6 +62,6 @@ class LibraryNotice extends Record
      */
     public function setValue($value)
     {
-        $this->json()->value = $value;
+        $this->json()->value = $value->json();
     }
 }

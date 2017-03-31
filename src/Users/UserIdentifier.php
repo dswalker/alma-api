@@ -29,15 +29,15 @@ class UserIdentifier extends Record
      */
     public function getIdType()
     {
-        return $this->json()->id_type;
+        return $this->getValueObject('id_type');
     }
-    
+
     /**
      * The identifier type.
      * 
      * Possible codes are listed in 'User Identifier Type' code table. Mandatory.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setIdType($value, $desc = "")
@@ -56,7 +56,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->value;
     }
-    
+
     /**
      * The identifier value.
      * 
@@ -78,7 +78,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->note;
     }
-    
+
     /**
      * identifier's note.
      *
@@ -98,7 +98,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->status;
     }
-    
+
     /**
      * identifier's status.
      *
@@ -123,7 +123,7 @@ class UserIdentifier extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

@@ -29,7 +29,7 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->primary_id;
     }
-    
+
     /**
      * The user's first and last name.
      *
@@ -39,4 +39,24 @@ class ProxyForUser extends Record
     {
         return (string) $this->json()->full_name;
     }
+
+    /**
+     * Link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return (string) $this->json()->link;
     }
+
+    /**
+     * Link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->json()->link = $link;
+    }
+}

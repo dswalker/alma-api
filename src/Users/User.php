@@ -31,9 +31,9 @@ class User extends Record
      */
     public function getRecordType()
     {
-        return $this->json()->record_type;
+        return $this->getValueObject('record_type');
     }
-    
+
     /**
      * The type of user record.
      * 
@@ -41,7 +41,7 @@ class User extends Record
      * Staff, Public. Mandatory In User API. On SIS load, this field is determined
      * according to the SIS profile.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setRecordType($value, $desc = "")
@@ -62,7 +62,7 @@ class User extends Record
     {
         return (string) $this->json()->primary_id;
     }
-    
+
     /**
      * The primary identifier of the user.
      * 
@@ -86,7 +86,7 @@ class User extends Record
     {
         return (string) $this->json()->first_name;
     }
-    
+
     /**
      * The user's first name.
      *
@@ -106,7 +106,7 @@ class User extends Record
     {
         return (string) $this->json()->middle_name;
     }
-    
+
     /**
      * The user's middle name.
      *
@@ -126,7 +126,7 @@ class User extends Record
     {
         return (string) $this->json()->last_name;
     }
-    
+
     /**
      * The user's last name.
      *
@@ -146,7 +146,7 @@ class User extends Record
     {
         return (string) $this->json()->full_name;
     }
-    
+
     /**
      * A four-digit number which serves as a password for the user to log on to
      * the selfcheck machine (SIP2).
@@ -174,7 +174,7 @@ class User extends Record
      * user record), unless 'override' parameter is sent with the field's name.
      * See blog for more details.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setUserTitle($value, $desc = "")
@@ -197,9 +197,9 @@ class User extends Record
      */
     public function getJobCategory()
     {
-        return $this->json()->job_category;
+        return $this->getValueObject('job_category');
     }
-    
+
     /**
      * The types of jobs the user performs in the library, such as Cataloger,
      * Circulation Desk Operator, and so forth.
@@ -211,7 +211,7 @@ class User extends Record
      * user record), unless 'override' parameter is sent with the field's name.
      * See blog for more details.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setJobCategory($value, $desc = "")
@@ -228,7 +228,7 @@ class User extends Record
     {
         return (string) $this->json()->job_description;
     }
-    
+
     /**
      * General description of the user's job.
      *
@@ -248,15 +248,15 @@ class User extends Record
      */
     public function getGender()
     {
-        return $this->json()->gender;
+        return $this->getValueObject('gender');
     }
-    
+
     /**
      * The user's gender.
      * 
      * Possible codes are listed in the 'Genders' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setGender($value, $desc = "")
@@ -279,9 +279,9 @@ class User extends Record
      */
     public function getUserGroup()
     {
-        return $this->json()->user_group;
+        return $this->getValueObject('user_group');
     }
-    
+
     /**
      * The group within the institution to which the user belongs.
      * 
@@ -293,7 +293,7 @@ class User extends Record
      * incoming user record), unless 'override' parameter is sent with the field's
      * name. See blog for more details.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setUserGroup($value, $desc = "")
@@ -315,9 +315,9 @@ class User extends Record
      */
     public function getCampusCode()
     {
-        return $this->json()->campus_code;
+        return $this->getValueObject('campus_code');
     }
-    
+
     /**
      * The code of the campus related to the user.
      * 
@@ -328,7 +328,7 @@ class User extends Record
      * if empty in the incoming user record), unless 'override' parameter is sent
      * with the field's name. See blog for more details.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setCampusCode($value, $desc = "")
@@ -345,7 +345,7 @@ class User extends Record
     {
         return (string) $this->json()->web_site_url;
     }
-    
+
     /**
      * The web site address related to the user.
      *
@@ -366,16 +366,16 @@ class User extends Record
      */
     public function getCatalogerLevel()
     {
-        return $this->json()->cataloger_level;
+        return $this->getValueObject('cataloger_level');
     }
-    
+
     /**
      * The cataloger level of the user.
      * 
      * The cataloger level serves to control which catalogers can edit and update
      * records which have been edited and updated by other users.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setCatalogerLevel($value, $desc = "")
@@ -398,9 +398,9 @@ class User extends Record
      */
     public function getPreferredLanguage()
     {
-        return $this->json()->preferred_language;
+        return $this->getValueObject('preferred_language');
     }
-    
+
     /**
      * The user's preferred language.
      * 
@@ -412,7 +412,7 @@ class User extends Record
      * 'override' parameter is sent with the field's name. See blog for more
      * details.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setPreferredLanguage($value, $desc = "")
@@ -429,7 +429,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->birth_date);
     }
-    
+
     /**
      * The user's birth date.
      *
@@ -449,7 +449,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->expiry_date);
     }
-    
+
     /**
      * The estimated date when the user is expected to leave the institution.
      *
@@ -469,7 +469,7 @@ class User extends Record
     {
         return $this->stringToDate((string) $this->json()->purge_date);
     }
-    
+
     /**
      * The date on which the user is purged from the system.
      *
@@ -492,9 +492,9 @@ class User extends Record
      */
     public function getAccountType()
     {
-        return $this->json()->account_type;
+        return $this->getValueObject('account_type');
     }
-    
+
     /**
      * The user's account type.
      * 
@@ -503,7 +503,7 @@ class User extends Record
      * Internal user to be External. It is NOT possible to update External user to
      * be Internal. On SIS load, users are always created as "External".
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setAccountType($value, $desc = "")
@@ -525,7 +525,7 @@ class User extends Record
     {
         return (string) $this->json()->external_id;
     }
-    
+
     /**
      * The external system from which the user was loaded into Alma. Relevant only
      * for External users.
@@ -576,16 +576,16 @@ class User extends Record
      */
     public function getStatus()
     {
-        return $this->json()->status;
+        return $this->getValueObject('status');
     }
-    
+
     /**
      * Status of user account.
      * 
      * Possible codes are listed in 'Content Structure Status' code table. Default
      * is Active.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setStatus($value, $desc = "")
@@ -604,7 +604,7 @@ class User extends Record
     {
         return (int) $this->json()->requests;
     }
-    
+
     /**
      * Number of loans for user.
      * 
@@ -616,7 +616,7 @@ class User extends Record
     {
         return (int) $this->json()->loans;
     }
-    
+
     /**
      * Fines/fees active balance for user
      * 
@@ -628,29 +628,60 @@ class User extends Record
     {
         return (float) $this->json()->fees;
     }
-    
+
     /**
      * List of the user's contacts information.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * contacts. Internal contacts will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @return ContactInfo
      */
     public function getContactInfo()
     {
-        return $this->json()->contact_info;
+        return new ContactInfo($this->json()->contact_info);
     }
-    
+
     /**
      * List of the user's contacts information.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * contacts. Internal contacts will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @param ContactInfo $contact_info
      */
-    public function setContactInfo(ContactInfo $contact_info)
+    public function setContactInfo($contact_info)
     {
-        $this->json()->contact_info = $contact_info;
+        $this->json()->contact_info = $contact_info->json();
     }
 
     /**
      * List of the user's additional identifiers.
+     * 
+     * Note that additional identifiers are case sensitive. SIS: In case of new
+     * user, these segments will be marked as "external". In case of
+     * synchronization, this list will replace the existing external identifiers.
+     * Internal identifiers will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @return UserIdentifier[]
      */
@@ -658,24 +689,35 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_identifiers->user_identifier as $user_identifier) {
+        foreach ((array) $this->json()->user_identifier as $user_identifier) {
             $final[] = new UserIdentifier($user_identifier);
         }
 
         return $final;
     }
-    
+
     /**
      * List of the user's additional identifiers.
+     * 
+     * Note that additional identifiers are case sensitive. SIS: In case of new
+     * user, these segments will be marked as "external". In case of
+     * synchronization, this list will replace the existing external identifiers.
+     * Internal identifiers will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @param UserIdentifier[] $user_identifiers
      */
     public function setUserIdentifiers(array $user_identifiers)
     {
-        $this->json()->user_identifiers->user_identifier = array();
+        $this->json()->user_identifier = array();
 
         foreach ($user_identifiers as $user_identifier) {
-            $this->json()->user_identifiers->user_identifier[] = $user_identifier->json();
+            $this->json()->user_identifier[] = $user_identifier->json();
         } 
     }
 
@@ -683,11 +725,11 @@ class User extends Record
      * List of the user's roles.
      * 
      * SIS: roles are NOT part of the SIS load. POST action: If list of roles is
-     * supplied, these will be the roles. If list of roles was not supplied in the
+     * supplied- these will be the roles. If list of roles was not supplied in the
      * POST action, the user will be created with roles according to the role
      * assignment rules (General > User Management Configuration > Configuration
      * Menu > Roles and Registration > Role Assignment Rules). PUT action: If list
-     * of roles is supplied, it will replace the existing roles. If list of roles
+     * of roles is supplied- it will replace the existing roles. If list of roles
      * was not supplied in the PUT action, the existing roles will be kept (note
      * that the roles behavior is different than the other segments: all user
      * segments are deleted if the incoming list is empty. Only roles are kept in
@@ -699,22 +741,22 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_roles->user_role as $user_role) {
+        foreach ((array) $this->json()->user_role as $user_role) {
             $final[] = new UserRole($user_role);
         }
 
         return $final;
     }
-    
+
     /**
      * List of the user's roles.
      * 
      * SIS: roles are NOT part of the SIS load. POST action: If list of roles is
-     * supplied, these will be the roles. If list of roles was not supplied in the
+     * supplied- these will be the roles. If list of roles was not supplied in the
      * POST action, the user will be created with roles according to the role
      * assignment rules (General > User Management Configuration > Configuration
      * Menu > Roles and Registration > Role Assignment Rules). PUT action: If list
-     * of roles is supplied, it will replace the existing roles. If list of roles
+     * of roles is supplied- it will replace the existing roles. If list of roles
      * was not supplied in the PUT action, the existing roles will be kept (note
      * that the roles behavior is different than the other segments: all user
      * segments are deleted if the incoming list is empty. Only roles are kept in
@@ -724,15 +766,25 @@ class User extends Record
      */
     public function setUserRoles(array $user_roles)
     {
-        $this->json()->user_roles->user_role = array();
+        $this->json()->user_role = array();
 
         foreach ($user_roles as $user_role) {
-            $this->json()->user_roles->user_role[] = $user_role->json();
+            $this->json()->user_role[] = $user_role->json();
         } 
     }
 
     /**
-     * List of the user's blocks.
+     * List of user's blocks.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * blocks. Internal blocks will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @return UserBlock[]
      */
@@ -740,29 +792,49 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_blocks->user_block as $user_block) {
+        foreach ((array) $this->json()->user_block as $user_block) {
             $final[] = new UserBlock($user_block);
         }
 
         return $final;
     }
-    
+
     /**
-     * List of the user's blocks.
+     * List of user's blocks.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * blocks. Internal blocks will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @param UserBlock[] $user_blocks
      */
     public function setUserBlocks(array $user_blocks)
     {
-        $this->json()->user_blocks->user_block = array();
+        $this->json()->user_block = array();
 
         foreach ($user_blocks as $user_block) {
-            $this->json()->user_blocks->user_block[] = $user_block->json();
+            $this->json()->user_block[] = $user_block->json();
         } 
     }
 
     /**
      * List of the user's related notes.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * notes. Internal notes will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @return UserNote[]
      */
@@ -770,29 +842,49 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_notes->user_note as $user_note) {
+        foreach ((array) $this->json()->user_note as $user_note) {
             $final[] = new UserNote($user_note);
         }
 
         return $final;
     }
-    
+
     /**
      * List of the user's related notes.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * notes. Internal notes will be kept. POST action: The segments will be
+     * created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @param UserNote[] $user_notes
      */
     public function setUserNotes(array $user_notes)
     {
-        $this->json()->user_notes->user_note = array();
+        $this->json()->user_note = array();
 
         foreach ($user_notes as $user_note) {
-            $this->json()->user_notes->user_note[] = $user_note->json();
+            $this->json()->user_note[] = $user_note->json();
         } 
     }
 
     /**
-     * List of the user's related statistics.
+     * List of user's statistics.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * statistics. Internal statistics will be kept. POST action: The segments
+     * will be created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @return UserStatistic[]
      */
@@ -800,29 +892,39 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->user_statistics->user_statistic as $user_statistic) {
+        foreach ((array) $this->json()->user_statistic as $user_statistic) {
             $final[] = new UserStatistic($user_statistic);
         }
 
         return $final;
     }
-    
+
     /**
-     * List of the user's related statistics.
+     * List of user's statistics.
+     * 
+     * SIS: In case of new user, these segments will be marked as "external". In
+     * case of synchronization, this list will replace the existing external
+     * statistics. Internal statistics will be kept. POST action: The segments
+     * will be created as external or as internal according to the "segment_type"
+     * attribute. PUT action: Incoming internal segments (based on the
+     * "segment_type" attribute) will replace the existing internal segments.
+     * Incoming external segments (based on the "segment_type" attribute) will
+     * replace the existing external segments. If the incoming list is empty,
+     * existing segments will be deleted.
      *
      * @param UserStatistic[] $user_statistics
      */
     public function setUserStatistics(array $user_statistics)
     {
-        $this->json()->user_statistics->user_statistic = array();
+        $this->json()->user_statistic = array();
 
         foreach ($user_statistics as $user_statistic) {
-            $this->json()->user_statistics->user_statistic[] = $user_statistic->json();
+            $this->json()->user_statistic[] = $user_statistic->json();
         } 
     }
 
     /**
-     * A list of the user's proxy users
+     * A list of proxy information for users.
      *
      * @return ProxyForUser[]
      */
@@ -830,13 +932,27 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->proxy_for_users->proxy_for_user as $proxy_for_user) {
+        foreach ((array) $this->json()->proxy_for_user as $proxy_for_user) {
             $final[] = new ProxyForUser($proxy_for_user);
         }
 
         return $final;
     }
-    
+
+    /**
+     * A list of proxy information for users.
+     *
+     * @param ProxyForUser[] $proxy_for_users
+     */
+    public function setProxyForUsers(array $proxy_for_users)
+    {
+        $this->json()->proxy_for_user = array();
+
+        foreach ($proxy_for_users as $proxy_for_user) {
+            $this->json()->proxy_for_user[] = $proxy_for_user->json();
+        } 
+    }
+
     /**
      * List of the user's related resource sharing libraries.
      * 
@@ -844,7 +960,7 @@ class User extends Record
      * if empty in the incoming user record). For external users in PUT action:
      * this field will not be replaced if it was updated manually (or if empty in
      * the incoming user record), unless 'override' parameter is sent with the
-     * field's name. See blog for more details.
+     * field's name.
      *
      * @return RsLibrary[]
      */
@@ -852,13 +968,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->rs_libraries->rs_librarie as $rs_librarie) {
+        foreach ((array) $this->json()->rs_library as $rs_librarie) {
             $final[] = new RsLibrary($rs_librarie);
         }
 
         return $final;
     }
-    
+
     /**
      * List of the user's related resource sharing libraries.
      * 
@@ -866,16 +982,16 @@ class User extends Record
      * if empty in the incoming user record). For external users in PUT action:
      * this field will not be replaced if it was updated manually (or if empty in
      * the incoming user record), unless 'override' parameter is sent with the
-     * field's name. See blog for more details.
+     * field's name.
      *
      * @param RsLibrary[] $rs_libraries
      */
     public function setRsLibraries(array $rs_libraries)
     {
-        $this->json()->rs_libraries->rs_librarie = array();
+        $this->json()->rs_library = array();
 
         foreach ($rs_libraries as $rs_librarie) {
-            $this->json()->rs_libraries->rs_librarie[] = $rs_librarie->json();
+            $this->json()->rs_library[] = $rs_librarie->json();
         } 
     }
 
@@ -886,7 +1002,7 @@ class User extends Record
      * if empty in the incoming user record). For external users in PUT action:
      * this field will not be replaced if it was updated manually (or if empty in
      * the incoming user record), unless 'override' parameter is sent with the
-     * field's name. See blog for more details.
+     * field's name.
      *
      * @return LibraryNotice[]
      */
@@ -894,13 +1010,13 @@ class User extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->library_notices->library_notice as $library_notice) {
+        foreach ((array) $this->json()->library_notice as $library_notice) {
             $final[] = new LibraryNotice($library_notice);
         }
 
         return $final;
     }
-    
+
     /**
      * List of the user's library notices.
      * 
@@ -908,16 +1024,36 @@ class User extends Record
      * if empty in the incoming user record). For external users in PUT action:
      * this field will not be replaced if it was updated manually (or if empty in
      * the incoming user record), unless 'override' parameter is sent with the
-     * field's name. See blog for more details.
+     * field's name.
      *
      * @param LibraryNotice[] $library_notices
      */
     public function setLibraryNotices(array $library_notices)
     {
-        $this->json()->library_notices->library_notice = array();
+        $this->json()->library_notice = array();
 
         foreach ($library_notices as $library_notice) {
-            $this->json()->library_notices->library_notice[] = $library_notice->json();
+            $this->json()->library_notice[] = $library_notice->json();
         } 
+    }
+
+    /**
+     * Link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return (string) $this->json()->link;
+    }
+
+    /**
+     * Link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->json()->link = $link;
     }
 }

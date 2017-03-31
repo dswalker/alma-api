@@ -31,7 +31,7 @@ class Phone extends Record
     {
         return (string) $this->json()->phone_number;
     }
-    
+
     /**
      * The phone number.
      * 
@@ -55,7 +55,7 @@ class Phone extends Record
     {
         return $this->getValueList('phone_types');
     }
-    
+
     /**
      * The different Phone types.
      * 
@@ -83,7 +83,7 @@ class Phone extends Record
     {
         return (bool) $this->json()->preferred;
     }
-    
+
     /**
      * Indication whether the phone number is the preferred one.
      * 
@@ -93,7 +93,7 @@ class Phone extends Record
      */
     public function setPreferred($preferred)
     {
-        $this->json()->preferred = $preferred;
+        $this->json()->preferred = $preferred->json();
     }
 
     /**
@@ -107,7 +107,7 @@ class Phone extends Record
     {
         return (bool) $this->json()->preferred_sms;
     }
-    
+
     /**
      * Indication whether the phone number is the preferred one for SMS sending.
      * 
@@ -117,7 +117,7 @@ class Phone extends Record
      */
     public function setPreferredSms($preferred_sms)
     {
-        $this->json()->preferred_sms = $preferred_sms;
+        $this->json()->preferred_sms = $preferred_sms->json();
     }
 
     /**
@@ -134,7 +134,7 @@ class Phone extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

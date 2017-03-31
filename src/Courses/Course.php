@@ -31,7 +31,7 @@ class Course extends Record
     {
         return (string) $this->json()->id;
     }
-    
+
     /**
      * Code of the course in Alma. Cannot be updated.
      * 
@@ -44,7 +44,7 @@ class Course extends Record
     {
         return (string) $this->json()->code;
     }
-    
+
     /**
      * Code of the course in Alma. Cannot be updated.
      * 
@@ -67,7 +67,7 @@ class Course extends Record
     {
         return (string) $this->json()->name;
     }
-    
+
     /**
      * The course name. Mandatory.
      *
@@ -89,7 +89,7 @@ class Course extends Record
     {
         return (string) $this->json()->section;
     }
-    
+
     /**
      * The course section.
      * 
@@ -109,13 +109,13 @@ class Course extends Record
      */
     public function getAcademicDepartment()
     {
-        return $this->json()->academic_department;
+        return $this->getValueObject('academic_department');
     }
-    
+
     /**
      * The course faculty.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setAcademicDepartment($value, $desc = "")
@@ -130,13 +130,13 @@ class Course extends Record
      */
     public function getProcessingDepartment()
     {
-        return $this->json()->processing_department;
+        return $this->getValueObject('processing_department');
     }
-    
+
     /**
      * The code and name of the department processing the course. Mandatory.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setProcessingDepartment($value, $desc = "")
@@ -153,7 +153,7 @@ class Course extends Record
     {
         return $this->getValueList('terms');
     }
-    
+
     /**
      * List of terms.
      *
@@ -171,7 +171,7 @@ class Course extends Record
     /**
      * The status of the course: ACTIVE/INACTIVE.
      * 
-     * Output parameter. When using XML for input, status will only be determined
+     * Output parameter.  When using XML for input, status will only be determined
      * by the start and end date.
      *
      * @return string
@@ -180,7 +180,7 @@ class Course extends Record
     {
         return (string) $this->json()->status;
     }
-    
+
     /**
      * The course start date.
      *
@@ -190,7 +190,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->start_date);
     }
-    
+
     /**
      * The course start date.
      *
@@ -210,7 +210,7 @@ class Course extends Record
     {
         return $this->stringToDate((string) $this->json()->end_date);
     }
-    
+
     /**
      * The course end date.
      *
@@ -230,7 +230,7 @@ class Course extends Record
     {
         return (int) $this->json()->weekly_hours;
     }
-    
+
     /**
      * The number of hours per week of the course.
      *
@@ -250,7 +250,7 @@ class Course extends Record
     {
         return (int) $this->json()->participants;
     }
-    
+
     /**
      * The number of course participants.
      *
@@ -270,7 +270,7 @@ class Course extends Record
     {
         return (string) $this->json()->year;
     }
-    
+
     /**
      * The course year.
      *
@@ -296,7 +296,7 @@ class Course extends Record
 
         return $final;
     }
-    
+
     /**
      * List of Instructors
      *
@@ -318,21 +318,28 @@ class Course extends Record
      */
     public function getSearchableIds()
     {
-        return (array) $this->json()->searchable_id;
+        return (array) $this->json()->searchable_ids;
     }
-    
+
     /**
      * A list of searchable IDs
      *
      * @param array $searchable_ids
      */
-    public function setSearchableIds(SearchableId $searchable_ids)
+    public function setSearchableIds($searchable_ids)
     {
-        $this->json()->searchable_ids = $searchable_ids;
+        $this->json()->searchable_ids = array();
+
+        foreach ($searchable_ids as $searchable_id) {
+            $this->json()->searchable_ids[] = $searchable_id;
+        } 
     }
 
     /**
-     * The course's related notes.
+     * List of related notes. In the PUT action the incoming list will replace the
+     * existing list.
+     * 
+     * If the incoming list is empty, the existing list will be deleted.
      *
      * @return Note[]
      */
@@ -340,29 +347,32 @@ class Course extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->notes->note as $note) {
+        foreach ((array) $this->json()->note as $note) {
             $final[] = new Note($note);
         }
 
         return $final;
     }
-    
+
     /**
-     * The course's related notes.
+     * List of related notes. In the PUT action the incoming list will replace the
+     * existing list.
+     * 
+     * If the incoming list is empty, the existing list will be deleted.
      *
      * @param Note[] $notes
      */
     public function setNotes(array $notes)
     {
-        $this->json()->notes->note = array();
+        $this->json()->note = array();
 
         foreach ($notes as $note) {
-            $this->json()->notes->note[] = $note->json();
+            $this->json()->note[] = $note->json();
         } 
     }
 
     /**
-     * A list of Reading Lists
+     * A list of Reading Lists.
      *
      * @return ReadingList[]
      */
@@ -376,9 +386,9 @@ class Course extends Record
 
         return $final;
     }
-    
+
     /**
-     * A list of Reading Lists
+     * A list of Reading Lists.
      *
      * @param ReadingList[] $reading_lists
      */
@@ -389,6 +399,26 @@ class Course extends Record
         foreach ($reading_lists as $reading_list) {
             $this->json()->reading_lists->reading_list[] = $reading_list->json();
         } 
+    }
+
+    /**
+     * Link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return (string) $this->json()->link;
+    }
+
+    /**
+     * Link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->json()->link = $link;
     }
 
     /**

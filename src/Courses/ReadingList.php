@@ -31,7 +31,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->id;
     }
-    
+
     /**
      * Code of the Reading List.
      * 
@@ -43,7 +43,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->code;
     }
-    
+
     /**
      * Code of the Reading List.
      * 
@@ -65,7 +65,7 @@ class ReadingList extends Record
     {
         return (string) $this->json()->name;
     }
-    
+
     /**
      * Name of the Reading List. Mandatory.
      *
@@ -85,7 +85,7 @@ class ReadingList extends Record
     {
         return $this->stringToDate((string) $this->json()->due_back_date);
     }
-    
+
     /**
      * The Reading List due back date.
      *
@@ -106,16 +106,16 @@ class ReadingList extends Record
      */
     public function getStatus()
     {
-        return $this->json()->status;
+        return $this->getValueObject('status');
     }
-    
+
     /**
      * The status of the reading list, such as ReadyForProcessing=Ready For
      * Processing etc.
      * 
      * Possible values are listed in the 'ReadingListStatuses' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setStatus($value, $desc = "")
@@ -124,7 +124,56 @@ class ReadingList extends Record
     }
 
     /**
-     * The reading list's related notes.
+     * Visibility defines who is entitled to view the reading list, such as
+     * OPEN_TO_WORLD.
+     *
+     * @return Alma\Utils\Value
+     */
+    public function getVisibility()
+    {
+        return $this->getValueObject('visibility');
+    }
+
+    /**
+     * Visibility defines who is entitled to view the reading list, such as
+     * OPEN_TO_WORLD.
+     *
+     * @param string $value  value 
+     * @param string $desc   [optional] description
+     */
+    public function setVisibility($value, $desc = "")
+    {
+        $this->setValueObject('visibility', $value, $desc);
+    }
+
+    /**
+     * Publishing status defines whether a reading list is published, still in
+     * draft, or archived.
+     *
+     * @return Alma\Utils\Value
+     */
+    public function getPublishingStatus()
+    {
+        return $this->getValueObject('publishingStatus');
+    }
+
+    /**
+     * Publishing status defines whether a reading list is published, still in
+     * draft, or archived.
+     *
+     * @param string $value  value 
+     * @param string $desc   [optional] description
+     */
+    public function setPublishingStatus($value, $desc = "")
+    {
+        $this->setValueObject('publishingStatus', $value, $desc);
+    }
+
+    /**
+     * List of related notes. In the PUT action the incoming list will replace the
+     * existing list.
+     * 
+     * If the incoming list is empty, the existing list will be deleted.
      *
      * @return Note[]
      */
@@ -132,29 +181,32 @@ class ReadingList extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->notes->note as $note) {
+        foreach ((array) $this->json()->note as $note) {
             $final[] = new Note($note);
         }
 
         return $final;
     }
-    
+
     /**
-     * The reading list's related notes.
+     * List of related notes. In the PUT action the incoming list will replace the
+     * existing list.
+     * 
+     * If the incoming list is empty, the existing list will be deleted.
      *
      * @param Note[] $notes
      */
     public function setNotes(array $notes)
     {
-        $this->json()->notes->note = array();
+        $this->json()->note = array();
 
         foreach ($notes as $note) {
-            $this->json()->notes->note[] = $note->json();
+            $this->json()->note[] = $note->json();
         } 
     }
 
     /**
-     * List of Citations
+     * A list of Citations.
      *
      * @return Citation[]
      */
@@ -168,9 +220,9 @@ class ReadingList extends Record
 
         return $final;
     }
-    
+
     /**
-     * List of Citations
+     * A list of Citations.
      *
      * @param Citation[] $citations
      */
@@ -181,6 +233,26 @@ class ReadingList extends Record
         foreach ($citations as $citation) {
             $this->json()->citations->citation[] = $citation->json();
         } 
+    }
+
+    /**
+     * Link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return (string) $this->json()->link;
+    }
+
+    /**
+     * Link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->json()->link = $link;
     }
 
     /**
@@ -195,6 +267,8 @@ class ReadingList extends Record
             'code',
             'name',
             'status',
+            'visibility',
+            'publishingStatus',
         );
     }
 }

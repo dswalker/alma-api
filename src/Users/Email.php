@@ -29,7 +29,7 @@ class Email extends Record
     {
         return (string) $this->json()->email_address;
     }
-    
+
     /**
      * The email address. Mandatory.
      *
@@ -49,7 +49,7 @@ class Email extends Record
     {
         return (string) $this->json()->description;
     }
-    
+
     /**
      * The email address' related description.
      *
@@ -69,7 +69,7 @@ class Email extends Record
     {
         return $this->getValueList('email_types');
     }
-    
+
     /**
      * Email types
      *
@@ -95,7 +95,7 @@ class Email extends Record
     {
         return (bool) $this->json()->preferred;
     }
-    
+
     /**
      * Indication whether the email address is the preferred one.
      * 
@@ -105,7 +105,7 @@ class Email extends Record
      */
     public function setPreferred($preferred)
     {
-        $this->json()->preferred = $preferred;
+        $this->json()->preferred = $preferred->json();
     }
 
     /**
@@ -122,7 +122,7 @@ class Email extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

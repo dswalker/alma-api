@@ -30,16 +30,16 @@ class UserBlock extends Record
      */
     public function getBlockType()
     {
-        return $this->json()->block_type;
+        return $this->getValueObject('block_type');
     }
-    
+
     /**
      * The block type.
      * 
      * Possible codes are listed in the 'User Block Types' code table. Default is
      * 'GENERAL'.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setBlockType($value, $desc = "")
@@ -57,16 +57,16 @@ class UserBlock extends Record
      */
     public function getBlockDescription()
     {
-        return $this->json()->block_description;
+        return $this->getValueObject('block_description');
     }
-    
+
     /**
      * The block's description.
      * 
      * Mandatory. Possible codes are listed in the 'User Block Description' code
      * table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setBlockDescription($value, $desc = "")
@@ -85,7 +85,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_status;
     }
-    
+
     /**
      * The block's status.
      * 
@@ -107,7 +107,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->block_note;
     }
-    
+
     /**
      * The block's related note.
      *
@@ -127,7 +127,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->created_by;
     }
-    
+
     /**
      * Creator of the block
      *
@@ -147,7 +147,7 @@ class UserBlock extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-    
+
     /**
      * Creation date of the block
      *
@@ -155,7 +155,7 @@ class UserBlock extends Record
      */
     public function setCreatedDate($created_date)
     {
-        $this->json()->created_date = $created_date;
+        $this->json()->created_date = $this->dateToString($created_date);
     }
 
     /**
@@ -172,7 +172,7 @@ class UserBlock extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

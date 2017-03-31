@@ -30,7 +30,7 @@ class Citation extends Record
     {
         return (string) $this->json()->id;
     }
-    
+
     /**
      * The status of the citation. Possible codes are listed in
      * 'ReadingListCitationStatuses' code table and
@@ -40,15 +40,15 @@ class Citation extends Record
      */
     public function getStatus()
     {
-        return $this->json()->status;
+        return $this->getValueObject('status');
     }
-    
+
     /**
      * The status of the citation. Possible codes are listed in
      * 'ReadingListCitationStatuses' code table and
      * 'AdditionalReadingListCitationStatuses' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setStatus($value, $desc = "")
@@ -64,14 +64,14 @@ class Citation extends Record
      */
     public function getCopyrightsStatus()
     {
-        return $this->json()->copyrights_status;
+        return $this->getValueObject('copyrights_status');
     }
-    
+
     /**
      * The copyright status of the citation. Possible codes are listed in
      * 'CitationCopyRights' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setCopyrightsStatus($value, $desc = "")
@@ -87,9 +87,9 @@ class Citation extends Record
      */
     public function getSecondaryType()
     {
-        return $this->json()->secondary_type;
+        return $this->getValueObject('secondary_type');
     }
-    
+
     /**
      * The type of the citation. Possible codes are listed in
      * 'ReadingListCitationTypes' code table.
@@ -98,27 +98,27 @@ class Citation extends Record
      */
     public function getType()
     {
-        return $this->json()->type;
+        return $this->getValueObject('type');
     }
-    
+
     /**
-     * Metadata for the Citation.
+     * Metadata about the Citation.
      *
      * @return Metadata
      */
     public function getMetadata()
     {
-        return $this->json()->metadata;
+        return new Metadata($this->json()->metadata);
     }
-    
+
     /**
-     * Metadata for the Citation.
+     * Metadata about the Citation.
      *
      * @param Metadata $metadata
      */
-    public function setMetadata(Metadata $metadata)
+    public function setMetadata($metadata)
     {
-        $this->json()->metadata = $metadata;
+        $this->json()->metadata = $metadata->json();
     }
 
     /**
@@ -130,7 +130,7 @@ class Citation extends Record
     {
         return (string) $this->json()->open_url;
     }
-    
+
     /**
      * An OpenURL link for the Citation.
      *
@@ -153,7 +153,7 @@ class Citation extends Record
     {
         return (string) $this->json()->leganto_permalink;
     }
-    
+
     /**
      * A link to the Citation's file, when available.
      *
@@ -163,7 +163,7 @@ class Citation extends Record
     {
         return (string) $this->json()->file_link;
     }
-    
+
     /**
      * Public Note. Relevant for Leganto and only as an output.
      *
@@ -173,51 +173,41 @@ class Citation extends Record
     {
         return (string) $this->json()->public_note;
     }
-    
+
     /**
      * Types and Attributes configured in CitationAttributes, CitationTypes,
      * CitationsTypesAttributes.
      *
-     * @return DefinedField[]
+     * @return DefinedFields
      */
     public function getDefinedFields()
     {
-        $final = array();
-
-        foreach ((array) $this->json()->defined_fields->defined_field as $defined_field) {
-            $final[] = new DefinedField($defined_field);
-        }
-
-        return $final;
+        return new DefinedFields($this->json()->defined_fields);
     }
-    
+
     /**
      * Types and Attributes configured in CitationAttributes, CitationTypes,
      * CitationsTypesAttributes.
      *
-     * @param DefinedField[] $defined_fields
+     * @param DefinedFields $defined_fields
      */
-    public function setDefinedFields(array $defined_fields)
+    public function setDefinedFields($defined_fields)
     {
-        $this->json()->defined_fields->defined_field = array();
-
-        foreach ($defined_fields as $defined_field) {
-            $this->json()->defined_fields->defined_field[] = $defined_field->json();
-        } 
+        $this->json()->defined_fields = $defined_fields->json();
     }
 
     /**
-     * Information regarding the Section to which the citation belongs.
+     * Information regarding the related Section.
      *
      * @return SectionInfo
      */
     public function getSectionInfo()
     {
-        return $this->json()->section_info;
+        return new SectionInfo($this->json()->section_info);
     }
-    
+
     /**
-     * Tags of the Citation.
+     * A list of Citation tags.
      *
      * @return CitationTag[]
      */
@@ -231,7 +221,41 @@ class Citation extends Record
 
         return $final;
     }
-    
+
+    /**
+     * A list of Citation tags.
+     *
+     * @param CitationTag[] $citation_tags
+     */
+    public function setCitationTags(array $citation_tags)
+    {
+        $this->json()->citation_tags->citation_tag = array();
+
+        foreach ($citation_tags as $citation_tag) {
+            $this->json()->citation_tags->citation_tag[] = $citation_tag->json();
+        } 
+    }
+
+    /**
+     * Link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return (string) $this->json()->link;
+    }
+
+    /**
+     * Link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->json()->link = $link;
+    }
+
     /**
      * Required fields
      *

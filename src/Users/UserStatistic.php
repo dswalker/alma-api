@@ -29,15 +29,15 @@ class UserStatistic extends Record
      */
     public function getStatisticCategory()
     {
-        return $this->json()->statistic_category;
+        return $this->getValueObject('statistic_category');
     }
-    
+
     /**
      * The statistic's Categories.
      * 
      * Possible codes are listed in 'User Statistical Categories' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setStatisticCategory($value, $desc = "")
@@ -55,16 +55,16 @@ class UserStatistic extends Record
      */
     public function getCategoryType()
     {
-        return $this->json()->category_type;
+        return $this->getValueObject('category_type');
     }
-    
+
     /**
      * The statistic's type.
      * 
      * Possible codes are listed in 'User Category Types' code table. Output
      * parameter.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setCategoryType($value, $desc = "")
@@ -81,7 +81,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->statistic_note;
     }
-    
+
     /**
      * The statistic's related note.
      *
@@ -106,7 +106,7 @@ class UserStatistic extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

@@ -29,15 +29,15 @@ class Parameter extends Record
      */
     public function getType()
     {
-        return $this->json()->type;
+        return $this->getValueObject('type');
     }
-    
+
     /**
      * The parameter's type.
      * 
      * Possible values: CirculationDesk, MetadataType, ServiceUnit.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setType($value, $desc = "")
@@ -52,13 +52,13 @@ class Parameter extends Record
      */
     public function getValue()
     {
-        return $this->json()->value;
+        return $this->getValueObject('value');
     }
-    
+
     /**
      * Parameter's related value.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setValue($value, $desc = "")

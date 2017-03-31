@@ -33,30 +33,30 @@ class ContactInfo extends Record
     /**
      * List of user's addresses.
      *
-     * @return Addresse[]
+     * @return Address[]
      */
     public function getAddresses()
     {
         $final = array();
 
-        foreach ((array) $this->json()->addresses->addresse as $addresse) {
-            $final[] = new Addresse($addresse);
+        foreach ((array) $this->json()->address as $addresse) {
+            $final[] = new Address($addresse);
         }
 
         return $final;
     }
-    
+
     /**
      * List of user's addresses.
      *
-     * @param Addresse[] $addresses
+     * @param Address[] $addresses
      */
     public function setAddresses(array $addresses)
     {
-        $this->json()->addresses->addresse = array();
+        $this->json()->address = array();
 
         foreach ($addresses as $addresse) {
-            $this->json()->addresses->addresse[] = $addresse->json();
+            $this->json()->address[] = $addresse->json();
         } 
     }
 
@@ -69,13 +69,13 @@ class ContactInfo extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->emails->email as $email) {
+        foreach ((array) $this->json()->email as $email) {
             $final[] = new Email($email);
         }
 
         return $final;
     }
-    
+
     /**
      * List of user's email addresses.
      *
@@ -83,10 +83,10 @@ class ContactInfo extends Record
      */
     public function setEmails(array $emails)
     {
-        $this->json()->emails->email = array();
+        $this->json()->email = array();
 
         foreach ($emails as $email) {
-            $this->json()->emails->email[] = $email->json();
+            $this->json()->email[] = $email->json();
         } 
     }
 
@@ -99,13 +99,13 @@ class ContactInfo extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->phones->phone as $phone) {
+        foreach ((array) $this->json()->phone as $phone) {
             $final[] = new Phone($phone);
         }
 
         return $final;
     }
-    
+
     /**
      * List of user's phone numbers.
      *
@@ -113,10 +113,10 @@ class ContactInfo extends Record
      */
     public function setPhones(array $phones)
     {
-        $this->json()->phones->phone = array();
+        $this->json()->phone = array();
 
         foreach ($phones as $phone) {
-            $this->json()->phones->phone[] = $phone->json();
+            $this->json()->phone[] = $phone->json();
         } 
     }
 }

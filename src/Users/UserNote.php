@@ -29,15 +29,15 @@ class UserNote extends Record
      */
     public function getNoteType()
     {
-        return $this->json()->note_type;
+        return $this->getValueObject('note_type');
     }
-    
+
     /**
      * The note's type.
      * 
      * Possible codes are listed in the 'Note Types' code table. Mandatory.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setNoteType($value, $desc = "")
@@ -56,7 +56,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->note_text;
     }
-    
+
     /**
      * The note's text.
      * 
@@ -80,7 +80,7 @@ class UserNote extends Record
     {
         return (bool) $this->json()->user_viewable;
     }
-    
+
     /**
      * Indication whether the user is able to view the note.
      * 
@@ -90,7 +90,7 @@ class UserNote extends Record
      */
     public function setUserViewable($user_viewable)
     {
-        $this->json()->user_viewable = $user_viewable;
+        $this->json()->user_viewable = $user_viewable->json();
     }
 
     /**
@@ -102,7 +102,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->created_by;
     }
-    
+
     /**
      * Creator of the note.
      *
@@ -122,7 +122,7 @@ class UserNote extends Record
     {
         return $this->stringToDate((string) $this->json()->created_date);
     }
-    
+
     /**
      * Creation date of the note.
      *
@@ -130,7 +130,7 @@ class UserNote extends Record
      */
     public function setCreatedDate($created_date)
     {
-        $this->json()->created_date = $created_date;
+        $this->json()->created_date = $this->dateToString($created_date);
     }
 
     /**
@@ -147,7 +147,7 @@ class UserNote extends Record
     {
         return (string) $this->json()->segment_type;
     }
-    
+
     /**
      * The type of the segment ("Internal" or "External").
      * 

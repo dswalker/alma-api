@@ -29,7 +29,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->id;
     }
-    
+
     /**
      * Name of the Section. Output parameter.
      *
@@ -39,7 +39,7 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->name;
     }
-    
+
     /**
      * Description of the Section. Output parameter.
      *
@@ -49,4 +49,4 @@ class SectionInfo extends Record
     {
         return (string) $this->json()->description;
     }
-    }
+}

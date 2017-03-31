@@ -31,9 +31,9 @@ class UserRole extends Record
      */
     public function getStatus()
     {
-        return $this->json()->status;
+        return $this->getValueObject('status');
     }
-    
+
     /**
      * The user's role status.
      * 
@@ -41,7 +41,7 @@ class UserRole extends Record
      * empty, default value is Active, if an illegal value is given, default is
      * Inactive.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setStatus($value, $desc = "")
@@ -56,13 +56,13 @@ class UserRole extends Record
      */
     public function getScope()
     {
-        return $this->json()->scope;
+        return $this->getValueObject('scope');
     }
-    
+
     /**
      * The campus/library to which the role applies.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setScope($value, $desc = "")
@@ -79,15 +79,15 @@ class UserRole extends Record
      */
     public function getRoleType()
     {
-        return $this->json()->role_type;
+        return $this->getValueObject('role_type');
     }
-    
+
     /**
      * The user's role.
      * 
      * Possible codes are listed in 'User Roles' code table.
      *
-     * @param string $value  value
+     * @param string $value  value 
      * @param string $desc   [optional] description
      */
     public function setRoleType($value, $desc = "")
@@ -104,7 +104,7 @@ class UserRole extends Record
     {
         return $this->stringToDate((string) $this->json()->expiry_date);
     }
-    
+
     /**
      * The date after which the user no longer has the role.
      *
@@ -124,13 +124,13 @@ class UserRole extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->parameters->parameter as $parameter) {
+        foreach ((array) $this->json()->parameter as $parameter) {
             $final[] = new Parameter($parameter);
         }
 
         return $final;
     }
-    
+
     /**
      * Role's related parameters.
      *
@@ -138,10 +138,10 @@ class UserRole extends Record
      */
     public function setParameters(array $parameters)
     {
-        $this->json()->parameters->parameter = array();
+        $this->json()->parameter = array();
 
         foreach ($parameters as $parameter) {
-            $this->json()->parameters->parameter[] = $parameter->json();
+            $this->json()->parameter[] = $parameter->json();
         } 
     }
 }
