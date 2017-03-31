@@ -30,10 +30,10 @@ class Value
     /**
      * New Value object
      * 
-     * @param \stdClass|string $value  the value
-     * @param string $desc             the description
+     * @param \stdClass|string $value  [optional] the value
+     * @param string $desc             [optional] the description
      */
-    public function __construct($value, $desc)
+    public function __construct($value = "", $desc = "")
     {
         // value was a json object, taken from Alma itself
         
