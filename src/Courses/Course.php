@@ -380,7 +380,7 @@ class Course extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->reading_lists->reading_list as $reading_list) {
+        foreach ((array) $this->json()->reading_lists()->reading_list as $reading_list) {
             $final[] = new ReadingList($reading_list);
         }
 
@@ -394,10 +394,10 @@ class Course extends Record
      */
     public function setReadingLists(array $reading_lists)
     {
-        $this->json()->reading_lists->reading_list = array();
+        $this->json()->reading_lists()->reading_list = array();
 
         foreach ($reading_lists as $reading_list) {
-            $this->json()->reading_lists->reading_list[] = $reading_list->json();
+            $this->json()->reading_lists()->reading_list[] = $reading_list->json();
         } 
     }
 

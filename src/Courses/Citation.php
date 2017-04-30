@@ -215,7 +215,7 @@ class Citation extends Record
     {
         $final = array();
 
-        foreach ((array) $this->json()->citation_tags->citation_tag as $citation_tag) {
+        foreach ((array) $this->json()->citation_tags()->citation_tag as $citation_tag) {
             $final[] = new CitationTag($citation_tag);
         }
 
@@ -229,10 +229,10 @@ class Citation extends Record
      */
     public function setCitationTags(array $citation_tags)
     {
-        $this->json()->citation_tags->citation_tag = array();
+        $this->json()->citation_tags()->citation_tag = array();
 
         foreach ($citation_tags as $citation_tag) {
-            $this->json()->citation_tags->citation_tag[] = $citation_tag->json();
+            $this->json()->citation_tags()->citation_tag[] = $citation_tag->json();
         } 
     }
 

@@ -55,7 +55,11 @@ class Json
     public function __call($name, $arguments)
     {
         if (isset($this->$name)) {
-            return $this->$name;
+            if ($this->$name instanceof \stdClass) {
+            	$this->$name = new Json($this->$name);
+            }
+            
+        	return $this->$name;
         } else {
             $this->$name = new Json();
             return $this->$name;
