@@ -73,7 +73,7 @@ abstract class Record
     public function save()
     {
         $this->checkForLink();
-        $this->json = $this->client()->put($this->getLink(), (string) $this->json());
+        $this->json = $this->client()->putJson($this->getLink(), $this->json());
     }
 
     /**
@@ -82,7 +82,7 @@ abstract class Record
     public function delete()
     {
         $this->checkForLink();
-        $this->client()->delete($this->getLink());
+        $this->client()->deleteUrl($this->getLink());
         unset($this->json);
     }
     
@@ -92,7 +92,7 @@ abstract class Record
     public function getFullRecord()
     {
         $this->checkForLink();
-        $this->json = $this->client()->get($this->getLink());
+        $this->json = $this->client()->getUrl($this->getLink());
         $this->partial = false;
     }
     

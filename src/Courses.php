@@ -44,7 +44,7 @@ class Courses extends Alma
             'direction' => $direction
         );
         
-        $json = $this->client()->get('courses', $params);
+        $json = $this->client()->getUrl('courses', $params);
         return new Results($json, $offset);
     }
 
@@ -59,7 +59,7 @@ class Courses extends Alma
     {
     	$params = array('view' => 'full');
     	
-        $json = $this->client()->get("courses/$id", $params);
+        $json = $this->client()->getUrl("courses/$id", $params);
         return new Course($json);
     }
 
@@ -70,6 +70,6 @@ class Courses extends Alma
      */
     public function addCourse(Course $course)
     {
-        $this->client()->post("courses", (string) $course);
+        $this->client()->postJson('courses', $course->json());
     }
 }

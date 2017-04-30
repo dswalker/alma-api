@@ -12,13 +12,16 @@ namespace Alma\Utils;
 
 use Alma\Alma;
 use Alma\Exception\AlmaException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * HTTP Client
  *
  * @author David Walker <dwalker@calstate.edu>
  */
-class HttpClient
+class HttpClient extends Client
 {
     /**
      * Get request
@@ -29,76 +32,53 @@ class HttpClient
      * @throws AlmaException
      * @return Json
      */
-    public function get($uri, $params = array())
+    public function getUrl($uri, $params = array())
     {
         $url = $this->constructUrl($uri, $params);
-        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-        $response = curl_exec($ch);
-        
+        $response = $this->get($url);
         return $this->processResponse($response);
     }
 
     /**
-     * Put request
+     * Put JSON request
      *
      * @param string $uri
-     * @param string $body
+     * @param Json|array $json
      * @param array $params
      *
      * @throws AlmaException
      * @return Json
      */
-    public function put($uri, $body, $params = array())
+    public function putJson($uri, $json, $params = array())
     {
-        $url = $this->constructUrl($uri, $params);
-        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json'
-        ));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        
-        return $this->processResponse($response);
+    	try {
+	    	$url = $this->constructUrl($uri, $params);
+	    	$response = $this->put($url,['json' => $json]);
+	    	return $this->processResponse($response);
+    	} catch (RequestException $e) {
+	       	$this->processException($e);
+    	}
     }
 
     /**
-     * Post request
+     * Post JSON request
      *
      * @param string $uri
-     * @param string $body
+     * @param Json|array $body
      * @param array $params
      *
      * @throws AlmaException
      * @return Json
      */
-    public function post($uri, $body, $params = array())
+    public function postJson($uri, $json, $params = array())
     {
-        $url = $this->constructUrl($uri, $params);
-        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json'
-        ));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        
-        return $this->processResponse($response);
+    	try {
+	        $url = $this->constructUrl($uri, $params);
+	        $response = $this->post($url, ['json' => $json]);
+	        return $this->processResponse($response);
+    	} catch (RequestException $e) {
+    		$this->processException($e);
+    	}
     }
 
     /**
@@ -111,37 +91,45 @@ class HttpClient
      * @throws AlmaException
      * @return bool true on success, exception on error
      */
-    public function delete($uri, $params = array())
+    public function deleteUrl($uri, $params = array())
     {
         $url = $this->constructUrl($uri, $params);
-        
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        $response = curl_exec($ch);
-        curl_close($ch);
-        
+        $this->delete($uri);
         return true;
     }
 
     /**
      * Check the response for errors, otherwise return as JSON
      *
-     * @param string $response
+     * @param ResponseInterface $response
      * @throws AlmaException
      * @return \Alma\Utils\Json
      */
     protected function processResponse($response)
     {
-        $json = new Json($response);
+    	// convert to json
+    	
+    	$body = (string) $response->getBody();
+        $json = new Json($body);
         
         if ($json->errorsExist != "") {
             throw new AlmaException($response);
         }
         
         return $json;
+    }
+    
+    /**
+     * Get a clean server error message
+     * 
+     * @param RequestException $e
+     * @throws AlmaException
+     */
+    
+    protected function processException(RequestException $e)
+    {
+    	$body = (string) $e->getResponse()->getBody();
+    	throw new AlmaException($body);
     }
 
     /**
