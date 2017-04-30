@@ -34,9 +34,13 @@ class HttpClient extends Client
      */
     public function getUrl($uri, $params = array())
     {
-        $url = $this->constructUrl($uri, $params);
-        $response = $this->get($url);
-        return $this->processResponse($response);
+        try {
+        	$url = $this->constructUrl($uri, $params);
+        	$response = $this->get($url);
+        	return $this->processResponse($response);
+        } catch (RequestException $e) {
+        	$this->processException($e);
+        }
     }
 
     /**

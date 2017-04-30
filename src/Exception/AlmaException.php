@@ -40,7 +40,19 @@ class AlmaException extends \Exception
         }
         
         if ($doc != null) {
-            foreach ($doc->errorList->error as $error) {
+        	$errors = array();
+        	
+        	if ( $doc->web_service_result != null ) {
+        		// most basic error
+        		$errors[] = $doc->web_service_result->errorList->error;
+        	} else {
+        		// typical error
+	        	foreach ($doc->errorList->error as $error) {
+	        		$errors[] = $error;
+	        	}
+        	}
+        	
+            foreach ($errors as $error) {
                 $message = (string) $error->errorMessage;
                 
                 if ($message == "") {
