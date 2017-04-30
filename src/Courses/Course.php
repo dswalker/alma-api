@@ -318,7 +318,7 @@ class Course extends Record
      */
     public function getSearchableIds()
     {
-        return (array) $this->json()->searchable_ids;
+        return (array) $this->json()->searchable_id;
     }
 
     /**
@@ -328,10 +328,10 @@ class Course extends Record
      */
     public function setSearchableIds($searchable_ids)
     {
-        $this->json()->searchable_ids = array();
+        $this->json()->searchable_id = array();
 
         foreach ($searchable_ids as $searchable_id) {
-            $this->json()->searchable_ids[] = $searchable_id;
+            $this->json()->searchable_id[] = $searchable_id;
         } 
     }
 
