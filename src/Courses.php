@@ -70,6 +70,7 @@ class Courses extends Alma
      */
     public function addCourse(Course $course)
     {
-        $this->client()->postJson('courses', $course->json());
+        $json = $this->client()->postJson('courses', $course->json());
+        $course->setJson($json);
     }
 }
