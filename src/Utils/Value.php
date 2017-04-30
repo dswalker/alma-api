@@ -39,11 +39,14 @@ class Value
         
         if ( $value instanceof \stdClass ) {
             if ( isset($value->value) ) {
-                $this->value = $object->value;
+                $this->value = $value->value;
             }
             if ( isset($value->desc) ) {
-                $this->desc = $object->desc;
+                $this->desc = $value->desc;
             }
+        } else {
+        	$this->value = $value;
+        	$this->desc = $desc;
         }
     }
     
