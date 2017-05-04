@@ -44,7 +44,7 @@ abstract class Record
      */
     public function __construct($json = "", $partial = false)
     {
-        $this->setJson($json, $partial);
+        $this->update($json, $partial);
     }
 
     /**
@@ -62,11 +62,11 @@ abstract class Record
     /**
      * Update the internal JSON object
      * 
-     * @param string|Json $json [optional] JSON string or object
+     * @param string|Json $json JSON string or object
      * @param bool $partial     [optional] Whether the object is partially loaded, having been
      *                          instantiated from a method that returns a 'brief' version of the data
      */
-    public function setJson($json = "", $partial = false)
+    public function update($json, $partial = false)
     {
     	if ($json != "") {
     		if ($json instanceof Json) {

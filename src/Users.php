@@ -38,7 +38,7 @@ class Users extends Alma
             'offset' => $offset,
             'order_by' => $order_by,
         );
-        $json = $this->client()->get('users', $params);
+        $json = $this->client()->getUrl('users', $params);
         return new Results($json, $offset);
     }
     
@@ -60,6 +60,7 @@ class Users extends Alma
      */
     public function addUser(User $user)
     {
-        $this->client()->post("users", (string) $user);
+        $json = $this->client()->postJson("users", $user->json());
+        $user->update($json);
     }
 }
