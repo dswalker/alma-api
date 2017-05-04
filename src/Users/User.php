@@ -386,13 +386,12 @@ class User extends Record
     /**
      * The user's preferred language.
      * 
-     * Possible codes are listed in 'User Preferred Language' code table. Default
-     * is the institution language. On SIS synch this field will not be replaced
-     * if it was updated manually (or if empty in the incoming user record). For
-     * external users in PUT action: this field will not be replaced if it was
-     * updated manually (or if empty in the incoming user record), unless
-     * 'override' parameter is sent with the field's name. See blog for more
-     * details.
+     * Possible codes are listed in 'User Preferred Language' code table. Default:
+     * en. On SIS synch this field will not be replaced if it was updated manually
+     * (or if empty in the incoming user record). For external users in PUT
+     * action: this field will not be replaced if it was updated manually (or if
+     * empty in the incoming user record), unless 'override' parameter is sent
+     * with the field's name. See blog for more details.
      *
      * @return Alma\Utils\Value
      */
@@ -404,13 +403,12 @@ class User extends Record
     /**
      * The user's preferred language.
      * 
-     * Possible codes are listed in 'User Preferred Language' code table. Default
-     * is the institution language. On SIS synch this field will not be replaced
-     * if it was updated manually (or if empty in the incoming user record). For
-     * external users in PUT action: this field will not be replaced if it was
-     * updated manually (or if empty in the incoming user record), unless
-     * 'override' parameter is sent with the field's name. See blog for more
-     * details.
+     * Possible codes are listed in 'User Preferred Language' code table. Default:
+     * en. On SIS synch this field will not be replaced if it was updated manually
+     * (or if empty in the incoming user record). For external users in PUT
+     * action: this field will not be replaced if it was updated manually (or if
+     * empty in the incoming user record), unless 'override' parameter is sent
+     * with the field's name. See blog for more details.
      *
      * @param string $value  value 
      * @param string $desc   [optional] description
@@ -618,15 +616,33 @@ class User extends Record
     }
 
     /**
-     * Fines/fees active balance for user
-     * 
-     * Output parameter.
+     * A list of fees.
      *
-     * @return float
+     * @return Fee[]
      */
     public function getFees()
     {
-        return (float) $this->json()->fees;
+        $final = array();
+
+        foreach ((array) $this->json()->fees()->fee as $fee) {
+            $final[] = new Fee($fee);
+        }
+
+        return $final;
+    }
+
+    /**
+     * A list of fees.
+     *
+     * @param Fee[] $fees
+     */
+    public function setFees(array $fees)
+    {
+        $this->json()->fees()->fee = array();
+
+        foreach ($fees as $fee) {
+            $this->json()->fees()->fee[] = $fee->json();
+        } 
     }
 
     /**
@@ -733,7 +749,8 @@ class User extends Record
      * was not supplied in the PUT action, the existing roles will be kept (note
      * that the roles behavior is different than the other segments: all user
      * segments are deleted if the incoming list is empty. Only roles are kept in
-     * such case).
+     * such case). Note: For the "Digital Inventory Operator" role at least one
+     * metadata-type should be added as a role-parameter.
      *
      * @return UserRole[]
      */
@@ -760,7 +777,8 @@ class User extends Record
      * was not supplied in the PUT action, the existing roles will be kept (note
      * that the roles behavior is different than the other segments: all user
      * segments are deleted if the incoming list is empty. Only roles are kept in
-     * such case).
+     * such case). Note: For the "Digital Inventory Operator" role at least one
+     * metadata-type should be added as a role-parameter.
      *
      * @param UserRole[] $user_roles
      */

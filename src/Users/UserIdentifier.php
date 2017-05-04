@@ -70,23 +70,23 @@ class UserIdentifier extends Record
     }
 
     /**
-     * identifier's note.
+     * Specific related note.
      *
-     * @return string
+     * @return Note
      */
     public function getNote()
     {
-        return (string) $this->json()->note;
+        return new Note($this->json()->note);
     }
 
     /**
-     * identifier's note.
+     * Specific related note.
      *
-     * @param string $note
+     * @param Note $note
      */
     public function setNote($note)
     {
-        $this->json()->note = $note;
+        $this->json()->note = $note->json();
     }
 
     /**
