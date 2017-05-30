@@ -43,14 +43,14 @@ abstract class Alma
      * New Alma Client
      *
      * @param unknown $host Alma host
-     * @param unknown $api_key API key provided by your institution’s API administrator
+     * @param unknown $api_key API key provided by your institutionâ€™s API administrator
      */
     public function __construct($host, $api_key)
     {
         self::$host = rtrim($host, '/');
         self::$api_key = $api_key;
         
-        $this->client = new HttpClient();
+        $this->client = new HttpClient(['verify' => false]);
     }
 
     /**
@@ -59,7 +59,7 @@ abstract class Alma
     protected function client()
     {
         if (! $this->client instanceof HttpClient) {
-            $this->client = new HttpClient();
+            $this->client = new HttpClient(['verify' => false]);
         }
         
         return $this->client;
