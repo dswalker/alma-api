@@ -99,13 +99,21 @@ abstract class Record
     }
     
     /**
+     * Clear the metadata
+     */
+    public function clear()
+    {
+    	unset($this->json);
+    }
+    
+    /**
      * Get the full record, if only partial loaded
      */
     public function getFullRecord()
     {
         $this->checkForLink();
-        $this->json = $this->client()->getUrl($this->getLink());
-        $this->partial = false;
+        $json = $this->client()->getUrl($this->getLink());
+        $this->update($json, false);
     }
     
     /**
