@@ -49,7 +49,7 @@ class Users extends Alma
      */
     public function getUser($user_id)
     {
-        $json = $this->client()->get("users/$user_id");
+        $json = $this->client()->getUrl("users/$user_id");
         return new User($json);
     }
 
