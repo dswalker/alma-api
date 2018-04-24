@@ -50,7 +50,10 @@ class Users extends Alma
     public function getUser($user_id)
     {
         $json = $this->client()->getUrl("users/$user_id");
-        return new User($json);
+        $user = new User($json);
+        $user->setLink($this->client()->url);
+        
+        return $user;
     }
 
     /**
