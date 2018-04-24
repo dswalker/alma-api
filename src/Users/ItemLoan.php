@@ -117,11 +117,11 @@ class ItemLoan extends Record
      * The loan's status. Output parameter. Possible values are: Active, Complete
      * (for loan that has been returned).
      *
-     * @return LoanStatus
+     * @return string
      */
     public function getLoanStatus()
     {
-        return new LoanStatus($this->json()->loan_status);
+        return (string) $this->json()->loan_status;
     }
 
     /**

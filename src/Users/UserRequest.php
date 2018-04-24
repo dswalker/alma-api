@@ -50,11 +50,11 @@ class UserRequest extends Record
      * Note that it is currently NOT possible to create MOVE or WORK_ORDER
      * request. PUT action: This field cannot be updated.
      *
-     * @return RequestTypes
+     * @return string
      */
     public function getRequestType()
     {
-        return new RequestTypes($this->json()->request_type);
+        return (string) $this->json()->request_type;
     }
 
     /**
@@ -65,11 +65,11 @@ class UserRequest extends Record
      * Note that it is currently NOT possible to create MOVE or WORK_ORDER
      * request. PUT action: This field cannot be updated.
      *
-     * @param RequestTypes $request_type
+     * @param string $request_type
      */
     public function setRequestType($request_type)
     {
-        $this->json()->request_type = $request_type->json();
+        $this->json()->request_type = $request_type;
     }
 
     /**
@@ -165,11 +165,11 @@ class UserRequest extends Record
      * Possible values are: LIBRARY, CIRCULATION_DESK. Relevant and mandatory when
      * request_type = HOLD or BOOKING.
      *
-     * @return PickupLocationTypes
+     * @return string
      */
     public function getPickupLocationType()
     {
-        return new PickupLocationTypes($this->json()->pickup_location_type);
+        return (string) $this->json()->pickup_location_type;
     }
 
     /**
@@ -178,11 +178,11 @@ class UserRequest extends Record
      * Possible values are: LIBRARY, CIRCULATION_DESK. Relevant and mandatory when
      * request_type = HOLD or BOOKING.
      *
-     * @param PickupLocationTypes $pickup_location_type
+     * @param string $pickup_location_type
      */
     public function setPickupLocationType($pickup_location_type)
     {
-        $this->json()->pickup_location_type = $pickup_location_type->json();
+        $this->json()->pickup_location_type = $pickup_location_type;
     }
 
     /**
@@ -457,11 +457,11 @@ class UserRequest extends Record
      * Possible values are: In Process, On Hold Shelf, Not Started. Output
      * parameter.
      *
-     * @return RequestStatus
+     * @return string
      */
     public function getRequestStatus()
     {
-        return new RequestStatus($this->json()->request_status);
+        return (string) $this->json()->request_status;
     }
 
     /**
