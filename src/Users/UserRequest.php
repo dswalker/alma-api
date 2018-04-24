@@ -334,6 +334,98 @@ class UserRequest extends Record
     }
 
     /**
+     * The title of the chapter or article.
+     *
+     * @return string
+     */
+    public function getChapterOrArticleTitle()
+    {
+        return (string) $this->json()->chapter_or_article_title;
+    }
+
+    /**
+     * The title of the chapter or article.
+     *
+     * @param string $chapter_or_article_title
+     */
+    public function setChapterOrArticleTitle($chapter_or_article_title)
+    {
+        $this->json()->chapter_or_article_title = $chapter_or_article_title;
+    }
+
+    /**
+     * The author of the chapter or article.
+     *
+     * @return string
+     */
+    public function getChapterOrArticleAuthor()
+    {
+        return (string) $this->json()->chapter_or_article_author;
+    }
+
+    /**
+     * The author of the chapter or article.
+     *
+     * @param string $chapter_or_article_author
+     */
+    public function setChapterOrArticleAuthor($chapter_or_article_author)
+    {
+        $this->json()->chapter_or_article_author = $chapter_or_article_author;
+    }
+
+    /**
+     * The pages required for the digitization.
+     *
+     * @return RequiredPagesRange[]
+     */
+    public function getRequiredPages()
+    {
+        $final = array();
+
+        foreach ((array) $this->json()->required_pages_range as $required_page) {
+            $final[] = new RequiredPagesRange($required_page);
+        }
+
+        return $final;
+    }
+
+    /**
+     * The pages required for the digitization.
+     *
+     * @param RequiredPagesRange[] $required_pages
+     */
+    public function setRequiredPages(array $required_pages)
+    {
+        $this->json()->required_pages_range = array();
+
+        foreach ($required_pages as $required_page) {
+            $this->json()->required_pages_range[] = $required_page->json();
+        } 
+    }
+
+    /**
+     * An indication whether the full chapter is requested for digitization. Valid
+     * options are: true of false (lower case).
+     *
+     * @return string
+     */
+    public function getFullChapter()
+    {
+        return (string) $this->json()->full_chapter;
+    }
+
+    /**
+     * An indication whether the full chapter is requested for digitization. Valid
+     * options are: true of false (lower case).
+     *
+     * @param string $full_chapter
+     */
+    public function setFullChapter($full_chapter)
+    {
+        $this->json()->full_chapter = $full_chapter;
+    }
+
+    /**
      * The related comment of the request.
      * 
      * Mandatory when request_type = DIGITIZATION and partial_digitization is

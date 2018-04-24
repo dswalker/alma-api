@@ -616,33 +616,15 @@ class User extends Record
     }
 
     /**
-     * A list of fees.
+     * Fines/fees active balance for user
+     * 
+     * Output parameter.
      *
-     * @return Fee[]
+     * @return float
      */
     public function getFees()
     {
-        $final = array();
-
-        foreach ((array) $this->json()->fees()->fee as $fee) {
-            $final[] = new Fee($fee);
-        }
-
-        return $final;
-    }
-
-    /**
-     * A list of fees.
-     *
-     * @param Fee[] $fees
-     */
-    public function setFees(array $fees)
-    {
-        $this->json()->fees()->fee = array();
-
-        foreach ($fees as $fee) {
-            $this->json()->fees()->fee[] = $fee->json();
-        } 
+        return (float) $this->json()->fees;
     }
 
     /**
@@ -1053,6 +1035,47 @@ class User extends Record
         foreach ($library_notices as $library_notice) {
             $this->json()->library_notice[] = $library_notice->json();
         } 
+    }
+
+    /**
+     * Reference to the system internal unique identifier at the institution
+     * identified by source_institution_code .
+     * 
+     * This field is populated at the copy user record (linked account). The value
+     * is equal to the linking_id at the source institution (identified by
+     * source_institution_code).
+     *
+     * @return string
+     */
+    public function getSourceLinkId()
+    {
+        return (string) $this->json()->source_link_id;
+    }
+
+    /**
+     * The code of the institution where the source user record is managed.
+     * 
+     * This field is populated at the copy user record (linked account).
+     *
+     * @return string
+     */
+    public function getSourceInstitutionCode()
+    {
+        return (string) $this->json()->source_institution_code;
+    }
+
+    /**
+     * The system internal unique identifier of the source user account.
+     * 
+     * This field is populated at the source user record. This can be used to
+     * fetch copies of the user record (linked accounts in other institutions) by
+     * calling the Get-User API with the source_institution_code parameter.
+     *
+     * @return string
+     */
+    public function getLinkingId()
+    {
+        return (string) $this->json()->linking_id;
     }
 
     /**

@@ -32,7 +32,7 @@ class Fee extends Record
     }
 
     /**
-     * The fine / fee type.
+     * The fine / fee type. Mandatory for POST.
      *
      * @return Alma\Utils\Value
      */
@@ -42,7 +42,7 @@ class Fee extends Record
     }
 
     /**
-     * The fine / fee type.
+     * The fine / fee type. Mandatory for POST.
      *
      * @param string $value  value 
      * @param string $desc   [optional] description
@@ -84,13 +84,23 @@ class Fee extends Record
     }
 
     /**
-     * The fine / fee original amount.
+     * The fine / fee original amount. Mandatory for POST.
      *
      * @return float
      */
     public function getOriginalAmount()
     {
         return (float) $this->json()->original_amount;
+    }
+
+    /**
+     * The fine / fee original amount. Mandatory for POST.
+     *
+     * @param float $original_amount
+     */
+    public function setOriginalAmount($original_amount)
+    {
+        $this->json()->original_amount = $original_amount;
     }
 
     /**
@@ -144,7 +154,7 @@ class Fee extends Record
     }
 
     /**
-     * The fine / fee owner.
+     * The fine / fee owner. Mandatory for POST.
      *
      * @return Alma\Utils\Value
      */
@@ -154,7 +164,7 @@ class Fee extends Record
     }
 
     /**
-     * The fine / fee owner.
+     * The fine / fee owner. Mandatory for POST.
      *
      * @param string $value  value 
      * @param string $desc   [optional] description

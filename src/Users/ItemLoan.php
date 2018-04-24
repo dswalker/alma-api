@@ -32,17 +32,6 @@ class ItemLoan extends Record
     }
 
     /**
-     * Identifier of the loan in Alma. Should be used in subsequent queries
-     * regarding the loan.
-     *
-     * @param string $loan_id
-     */
-    public function setLoanId($loan_id)
-    {
-        $this->json()->loan_id = $loan_id;
-    }
-
-    /**
      * The circulation desk code that is responsible of the loan. Mandatory.
      *
      * @return Alma\Utils\Value
@@ -105,13 +94,23 @@ class ItemLoan extends Record
     }
 
     /**
-     * The loan's due date. Output parameter.
+     * The loan's due date. Can be modified using PUT or the renew API.
      *
      * @return \DateTime
      */
     public function getDueDate()
     {
         return $this->stringToDate((string) $this->json()->due_date);
+    }
+
+    /**
+     * The loan's due date. Can be modified using PUT or the renew API.
+     *
+     * @param \DateTime|string $due_date
+     */
+    public function setDueDate($due_date)
+    {
+        $this->json()->due_date = $this->dateToString($due_date);
     }
 
     /**

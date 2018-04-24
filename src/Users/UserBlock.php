@@ -159,6 +159,46 @@ class UserBlock extends Record
     }
 
     /**
+     * Expiration date of the block
+     *
+     * @return \DateTime
+     */
+    public function getExpiryDate()
+    {
+        return $this->stringToDate((string) $this->json()->expiry_date);
+    }
+
+    /**
+     * Expiration date of the block
+     *
+     * @param \DateTime|string $expiry_date
+     */
+    public function setExpiryDate($expiry_date)
+    {
+        $this->json()->expiry_date = $this->dateToString($expiry_date);
+    }
+
+    /**
+     * Internal identifier of the loan which generated this block.
+     *
+     * @return string
+     */
+    public function getItemLoanId()
+    {
+        return (string) $this->json()->item_loan_id;
+    }
+
+    /**
+     * Internal identifier of the loan which generated this block.
+     *
+     * @param string $item_loan_id
+     */
+    public function setItemLoanId($item_loan_id)
+    {
+        $this->json()->item_loan_id = $item_loan_id;
+    }
+
+    /**
      * The type of the segment ("Internal" or "External").
      * 
      * Relevant only for User API (and not for SIS). For internal users, all the

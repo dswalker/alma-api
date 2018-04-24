@@ -42,23 +42,13 @@ class Transaction extends Record
     }
 
     /**
-     * Amount
+     * The transaction amount.
      *
-     * @return Amount
+     * @return float
      */
     public function getAmount()
     {
-        return new Amount($this->json()->amount);
-    }
-
-    /**
-     * Amount
-     *
-     * @param Amount $amount
-     */
-    public function setAmount($amount)
-    {
-        $this->json()->amount = $amount->json();
+        return (float) $this->json()->amount;
     }
 
     /**

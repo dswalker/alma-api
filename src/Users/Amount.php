@@ -41,9 +41,7 @@ class Amount extends Record
     }
 
     /**
-     * The currency.
-     * 
-     * Possible values are listed in 'Currency_CT' code table.
+     * The currency. Possible values are listed in 'Currency_CT' code table.
      *
      * @return Alma\Utils\Value
      */
@@ -53,9 +51,7 @@ class Amount extends Record
     }
 
     /**
-     * The currency.
-     * 
-     * Possible values are listed in 'Currency_CT' code table.
+     * The currency. Possible values are listed in 'Currency_CT' code table.
      *
      * @param string $value  value 
      * @param string $desc   [optional] description
