@@ -11,6 +11,7 @@
 
 namespace Alma\Courses;
 
+use Alma;
 use Alma\Utils\Record;
 
 /**
@@ -233,23 +234,23 @@ class Metadata extends Record
     }
 
     /**
-     * Specific related note.
+     * Note.
      *
-     * @return Note
+     * @return string
      */
     public function getNote()
     {
-        return new Note($this->json()->note);
+        return (string) $this->json()->note;
     }
 
     /**
-     * Specific related note.
+     * Note.
      *
-     * @param Note $note
+     * @param string $note
      */
     public function setNote($note)
     {
-        $this->json()->note = $note->json();
+        $this->json()->note = $note;
     }
 
     /**

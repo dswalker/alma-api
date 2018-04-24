@@ -11,6 +11,7 @@
 
 namespace Alma\Courses;
 
+use Alma;
 use Alma\Utils\Record;
 
 /**
@@ -171,7 +172,7 @@ class Course extends Record
     /**
      * The status of the course: ACTIVE/INACTIVE.
      * 
-     * Output parameter.  When using XML for input, status will only be determined
+     * Output parameter. When using XML for input, status will only be determined
      * by the start and end date.
      *
      * @return string
@@ -182,7 +183,7 @@ class Course extends Record
     }
 
     /**
-     * The course start date.
+     * The course start date. Mandatory.
      *
      * @return \DateTime
      */
@@ -192,7 +193,7 @@ class Course extends Record
     }
 
     /**
-     * The course start date.
+     * The course start date. Mandatory.
      *
      * @param \DateTime|string $start_date
      */
@@ -202,7 +203,7 @@ class Course extends Record
     }
 
     /**
-     * The course end date.
+     * The course end date. Mandatory.
      *
      * @return \DateTime
      */
@@ -212,7 +213,7 @@ class Course extends Record
     }
 
     /**
-     * The course end date.
+     * The course end date. Mandatory.
      *
      * @param \DateTime|string $end_date
      */
@@ -312,6 +313,36 @@ class Course extends Record
     }
 
     /**
+     * List of campuses
+     *
+     * @return Campus[]
+     */
+    public function getCampuses()
+    {
+        $final = array();
+
+        foreach ((array) $this->json()->campus as $campuse) {
+            $final[] = new Campus($campuse);
+        }
+
+        return $final;
+    }
+
+    /**
+     * List of campuses
+     *
+     * @param Campus[] $campuses
+     */
+    public function setCampuses(array $campuses)
+    {
+        $this->json()->campus = array();
+
+        foreach ($campuses as $campuse) {
+            $this->json()->campus[] = $campuse->json();
+        } 
+    }
+
+    /**
      * A list of searchable IDs
      *
      * @return array
@@ -399,6 +430,67 @@ class Course extends Record
         foreach ($reading_lists as $reading_list) {
             $this->json()->reading_lists()->reading_list[] = $reading_list->json();
         } 
+    }
+
+    /**
+     * Creator of the course. Output parameter.
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return (string) $this->json()->created_by;
+    }
+
+    /**
+     * The course creation date. Output parameter.
+     *
+     * @return \DateTime
+     */
+    public function getCreatedDate()
+    {
+        return $this->stringToDate((string) $this->json()->created_date);
+    }
+
+    /**
+     * Last user to modify the course. Output parameter.
+     *
+     * @return string
+     */
+    public function getLastModifiedBy()
+    {
+        return (string) $this->json()->last_modified_by;
+    }
+
+    /**
+     * Date by which the last change to the course was made. Output parameter.
+     *
+     * @return \DateTime
+     */
+    public function getLastModifiedDate()
+    {
+        return $this->stringToDate((string) $this->json()->last_modified_date);
+    }
+
+    /**
+     * ID of the course from which this course was duplicated or rolled over.
+     * Output parameter.
+     *
+     * @return string
+     */
+    public function getRolledFrom()
+    {
+        return (string) $this->json()->rolled_from;
+    }
+
+    /**
+     * Date by which the reading lists are to be submitted. Output parameter.
+     *
+     * @return \DateTime
+     */
+    public function getSubmitByDate()
+    {
+        return $this->stringToDate((string) $this->json()->submit_by_date);
     }
 
     /**

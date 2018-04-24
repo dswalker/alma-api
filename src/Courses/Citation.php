@@ -11,6 +11,7 @@
 
 namespace Alma\Courses;
 
+use Alma;
 use Alma\Utils\Record;
 
 /**
