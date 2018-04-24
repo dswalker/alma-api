@@ -23,6 +23,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class HttpClient extends Client
 {
+    public $url;
+    
     /**
      * Get request
      *
@@ -35,8 +37,8 @@ class HttpClient extends Client
     public function getUrl($uri, $params = array())
     {
         try {
-        	$url = $this->constructUrl($uri, $params);
-        	$response = $this->get($url);
+        	$this->url = $this->constructUrl($uri, $params);
+        	$response = $this->get($this->url);
         	return $this->processResponse($response);
         } catch (RequestException $e) {
         	$this->processException($e);
@@ -56,8 +58,8 @@ class HttpClient extends Client
     public function putJson($uri, $json, $params = array())
     {
     	try {
-	    	$url = $this->constructUrl($uri, $params);
-	    	$response = $this->put($url,['json' => $json]);
+    	    $this->url = $this->constructUrl($uri, $params);
+    	    $response = $this->put($this->url,['json' => $json]);
 	    	return $this->processResponse($response);
     	} catch (RequestException $e) {
 	       	$this->processException($e);
@@ -77,8 +79,8 @@ class HttpClient extends Client
     public function postJson($uri, $json, $params = array())
     {
     	try {
-	        $url = $this->constructUrl($uri, $params);
-	        $response = $this->post($url, ['json' => $json]);
+    	    $this->url = $this->constructUrl($uri, $params);
+    	    $response = $this->post($this->url, ['json' => $json]);
 	        return $this->processResponse($response);
     	} catch (RequestException $e) {
     		$this->processException($e);
@@ -97,8 +99,8 @@ class HttpClient extends Client
      */
     public function deleteUrl($uri, $params = array())
     {
-        $url = $this->constructUrl($uri, $params);
-        $this->delete($uri);
+        $this->url = $this->constructUrl($uri, $params);
+        $this->delete($this->url);
         return true;
     }
 
