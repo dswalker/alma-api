@@ -11,6 +11,7 @@
 
 namespace Alma\Users;
 
+use Alma;
 use Alma\Utils\Record;
 
 /**
