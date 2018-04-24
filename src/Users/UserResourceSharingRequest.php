@@ -933,17 +933,11 @@ class UserResourceSharingRequest extends Record
      * List of additional barcodes. Note that the first one appears in the main
      * barcode field.
      *
-     * @return AdditionalBarcode[]
+     * @return array
      */
     public function getAdditionalBarcodes()
     {
-        $final = array();
-
-        foreach ((array) $this->json()->additional_barcode as $additional_barcode) {
-            $final[] = new AdditionalBarcode($additional_barcode);
-        }
-
-        return $final;
+        return (array) $this->json()->additional_barcodes;
     }
 
     /**
