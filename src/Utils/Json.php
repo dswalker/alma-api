@@ -73,6 +73,6 @@ class Json
      */
     public function __toString()
     {
-        return json_encode($this);
+        return json_encode($this, JSON_PRETTY_PRINT);
     }
 }
