@@ -18,7 +18,7 @@ namespace Alma\Utils;
  *
  * @author David Walker <dwalker@calstate.edu>
  */
-abstract class ValueList implements \Iterator
+class ValueList implements \Iterator
 {
     /**
      * @var array
