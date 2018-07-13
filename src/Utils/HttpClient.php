@@ -129,13 +129,20 @@ class HttpClient extends Client
      * Get a clean server error message
      * 
      * @param RequestException $e
-     * @throws AlmaException
+     * @throws AlmaException|RequestException
      */
     
     protected function processException(RequestException $e)
     {
-    	$body = (string) $e->getResponse()->getBody();
-    	throw new AlmaException($body);
+    	$body = "";
+        $response = $e->getResponse();
+    	
+    	if ($response == null) {
+    	    throw $e;
+    	} else {
+    	    $body = (string) $response->getBody();
+            throw new AlmaException($body);
+    	}
     }
 
     /**
