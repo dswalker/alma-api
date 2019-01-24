@@ -1,31 +1,36 @@
 {
-    "name": "dswalker/alma-api",
-    "type": "library",
-    "description": "A PHP client library to interact with Ex Libris Alma web services",
-    "keywords": ["exlibris", "alma", "primo", "web service", "api"],
-    "homepage": "http://github.com/dswalker/AlmaApi",
-    "authors": [
-        {
-            "name": "David Walker",
-            "email": "dwalker@calstate.edu",
-            "homepage": "https://github.com/dswalker"
-        }
-    ],
-    "require": {
-        "php": ">=5.5",
-        "guzzlehttp/guzzle": "6.3.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Alma\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Alma\\Tests\\": "tests/"
-        }
-    }
+	"name" : "dswalker/alma-api",
+	"type" : "library",
+	"description" : "A PHP client library to interact with Ex Libris Alma web services",
+	"keywords" : [
+		"exlibris",
+		"alma",
+		"primo",
+		"web service",
+		"api"
+	],
+	"homepage" : "http://github.com/dswalker/alma-api",
+	"authors" : [{
+			"name" : "David Walker",
+			"email" : "dwalker@calstate.edu",
+			"homepage" : "https://github.com/dswalker"
+		}
+	],
+	"require" : {
+		"php" : ">=5.5",
+		"guzzlehttp/guzzle" : "6.3.3"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^4.0"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Alma\\" : "src/"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Alma\\Tests\\" : "tests/"
+		}
+	}
 }
