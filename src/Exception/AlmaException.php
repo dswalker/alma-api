@@ -28,12 +28,14 @@ class AlmaException extends \Exception
     public function __construct($response)
     {
         $message = "Alma returned no error response";
-        $code = "";
+        $code = 0;
         $doc = null;
         
         // contains xml or json
         
-        if (substr($response, 0, 1) == '<') {
+        if (substr($response, 0, 14) == '<!DOCTYPE HTML') {
+            $message = $response;
+        } elseif (substr($response, 0, 1) == '<') {
             $doc = new \SimpleXMLElement($response);
         } elseif (substr($response, 0, 1) == '{') {
             $doc = new Json($response);

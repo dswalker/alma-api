@@ -112,8 +112,10 @@ abstract class Record
     public function getFullRecord()
     {
         $this->checkForLink();
-        $json = $this->client()->getUrl($this->getLink());
+        $link = $this->getLink();
+        $json = $this->client()->getUrl($link);
         $this->update($json, false);
+        $this->setLink($link);
     }
     
     /**
